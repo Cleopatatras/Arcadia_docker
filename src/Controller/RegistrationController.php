@@ -29,13 +29,29 @@ class RegistrationController extends AbstractController
             // encode the plain password
             $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
 
+            // Récupérer les rôles du formulaire
+            $roles = $form->get('roles')->getData();
+            $user->setRoles($roles);
+
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // do anything else you need here, like send an email
-
-            return $security->login($user, UserAuthenticator::class, 'main');
+            // Rediriger selon le rôle de l'utilisateur
+            if (in_array('ROLE_ADMIN', $user->getRoles())) {
+                return $this->redirectToRoute('app_espace_admin'); // Route pour l'admin
+            } elseif (in_array('ROLE_EMPLOYE', $user->getRoles())) {
+                return $this->redirectToRoute('app_espace_emp'); // Route pour l'employé
+            } elseif (in_array('ROLE_VETERINAIRE', $user->getRoles())) {
+                return $this->redirectToRoute('app_espace_veto'); // Route pour le vétérinaire
+            } else {
+                return $this->redirectToRoute('app_main'); // Route par défaut
+            }
         }
+
+        // do anything else you need here, like send an email
+
+        //     return $security->login($user, UserAuthenticator::class, 'main');
+        // }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form,
