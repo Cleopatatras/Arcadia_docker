@@ -1,3 +1,4 @@
+
 services:
   database:
     container_name: database
@@ -17,8 +18,11 @@ services:
       context: ./php
     ports:
       - 8088:80
+      - 8443:443
     volumes:
       - ./apache/default.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./apache/default-ssl.conf:/etc/apache2/sites-enabled/000-default-ssl.conf
+      - ./etc/ssl:/etc/ssl
       - ./app:/var/www
     depends_on:
       - database
@@ -33,16 +37,23 @@ services:
       UPLOAD_LIMIT: 20M
     ports:
       - 8899:80
+  mailhog:
+    image: mailhog/mailhog
+    logging:
+      driver: 'none'
+    ports:
+      - 1025:1025 #SMTP
+      - 8025:8025 #Boite mail
   mongo:
     image: mongo
-    
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - ./mongodb:/var/lib/mongodb
 
   mongo-express:
     image: mongo-express
-    
     ports:
       - 8081:8081
     environment:
