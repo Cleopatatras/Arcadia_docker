@@ -44,14 +44,23 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
-            return new RedirectResponse($targetPath);
+        // Vérification des rôles de l'utilisateur connecté
+        if (in_array('ROLE_ADMIN', $token->getRoleNames(), true)) {
+            return new RedirectResponse($this->urlGenerator->generate('app_espace_admin'));
         }
 
-        // For example:
-        // return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        if (in_array('ROLE_EMPLOYE', $token->getRoleNames(), true)) {
+            return new RedirectResponse($this->urlGenerator->generate('app_espace_emp'));
+        }
+
+        if (in_array('ROLE_VETERINAIRE', $token->getRoleNames(), true)) {
+            return new RedirectResponse($this->urlGenerator->generate('app_espace_veto'));
+        }
+
+        // Si aucun rôle spécifique, redirection vers la page d'accueil
+        return new RedirectResponse($this->urlGenerator->generate('app_main'));
     }
+
 
     protected function getLoginUrl(Request $request): string
     {

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout animal
+{% endblock %}
+
+{% block body %}
+
+	<div class="container contact bg-secondary text-primary w20">
+		<h1>Ajouter un animal</h1>
+		{{ form_start(animalForm) }}
+		<p style="p-2">
+			{{ form_row(animalForm.nom) }}</p>
+		<p style="p-2">{{ form_row(animalForm.race) }}</p>
+		<p style="p-2">{{ form_row(animalForm.habitat) }}</p>
+		<p style="p-2">{{ form_row(animalForm.image) }}</p>
+
+		<button class="btn btn-secondary text-primary" type=" submit">Ajouter</button>
+		{{ form_end(animalForm) }}
+	</div>
+
+
+{% endblock %}

@@ -488,7 +488,6 @@ button,
 [type=reset],
 [type=submit] {
   -webkit-appearance: button;
-  appearance: button;
 }
 button:not(:disabled),
 [type=button]:not(:disabled),
@@ -546,7 +545,6 @@ legend + * {
 
 [type=search] {
   -webkit-appearance: textfield;
-  appearance: textfield;
   outline-offset: -2px;
 }
 
@@ -569,7 +567,6 @@ legend + * {
 ::file-selector-button {
   font: inherit;
   -webkit-appearance: button;
-  appearance: button;
 }
 
 output {
@@ -11977,7 +11974,7 @@ textarea.form-control-lg {
   src: url("../fonts/Merriweather-Regular.ttf");
 }
 * {
-  margin: 0;
+  margin: 1;
   padding: 0;
   box-sizing: border-box;
   list-style-type: none;

@@ -9,6 +9,12 @@ security:
             entity:
                 class: App\Entity\Users
                 property: username
+    # Hiérarchie des rôles (déplacée à l'extérieur de firewalls)
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_EMPLOYE, ROLE_USER]
+        ROLE_EMPLOYE: [ROLE_USER]
+        ROLE_VETERINAIRE: [ROLE_USER]
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -38,9 +44,12 @@ security:
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
+        # Access control pour les différentes sections
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/espace_admin/index.html.twig, roles: ROLE_ADMIN }
+        - { path: ^/espace_emp/index.html.twig, roles: ROLE_EMPLOYEE }
+        - { path: ^/espace_veto/index.html.twig, roles: ROLE_VETERINARY }
+
 
 when@test:
     security:
