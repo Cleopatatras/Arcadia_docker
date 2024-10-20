@@ -46,6 +46,7 @@ services:
       - 8025:8025 #Boite mail
   mongo:
     image: mongo
+    restart: always
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
@@ -54,6 +55,7 @@ services:
 
   mongo-express:
     image: mongo-express
+    restart: always
     ports:
       - 8081:8081
     environment:
