@@ -26,43 +26,66 @@
 		</div>
 		<div class="presentationHabitats"></div>
 
-
-		<div class="container carrousel1">
-			<div class="carousel slide" data-bs-ride="carousel" id="carrousel1">
-				<div class="carousel-indicators">
-					<button type="button" data-bs-target="#carrousel1" data-bs-slide-to="0" class="active"></button>
-					<button type="button" data-bs-target="#carrousel1" data-bs-slide-to="1"></button>
-					<button type="button" data-bs-target="#carrousel1" data-bs-slide-to="2"></button>
+		<div id="carouselAutoplaying" class="carousel slide" data-bs-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="{{asset('/images/a photo of the forest of Brocéliande.jpg')}}" class="d-block w-100" alt="...">
 				</div>
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img src="{{asset('/images/savane/savane.jpg')}}" alt="La Savane" class="d-block w-100">
-						<div class="carousel-caption text-primary">
-							<h4>La Savane</h4>
-						</div>
-					</div>
-					<div class="carousel-item ">
-						<img src="{{asset('/images/jungle/jungle1.jpg')}}" alt="La Jungle" class="d-block w-100">
-						<div class="carousel-caption text-primary">
-							<h4>La Jungle</h4>
-						</div>
-					</div>
-					<div class="carousel-item ">
-						<img src="{{asset('/Images/Marais/Marais.jpg')}}" alt="Le Marais" class="d-block w-100">
-						<div class="carousel-caption text-primary">
-							<h4>Les marais</h4>
-						</div>
-					</div>
+				<div class="carousel-item">
+					<img src="" class="d-block w-100" alt="...">
 				</div>
-				<button class="carousel-control-prev" type="button" data-bs-target="#carrousel1" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon"></span>
-				</button>
-				<button class="carousel-control-next" type="button" data-bs-target="#carrousel1" data-bs-slide="next">
-					<span class="carousel-control-next-icon"></span>
-				</button>
+				<div class="carousel-item">
+					<img src="" class="d-block w-100" alt="...">
+				</div>
 			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselAutoplaying" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselAutoplaying" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
 		</div>
+
+		{# <div class="container carrousel1">
+																	<div class="carousel slide" data-bs-ride="carousel" id="carrousel1">
+																		<div class="carousel-indicators">
+																			<button type="button" data-bs-target="#carrousel1" data-bs-slide-to="0" class="active"></button>
+																			<button type="button" data-bs-target="#carrousel1" data-bs-slide-to="1"></button>
+																			<button type="button" data-bs-target="#carrousel1" data-bs-slide-to="2"></button>
+																		</div>
+																		<div class="carousel-inner">
+																			<div class="carousel-item active">
+																				<img src="{{asset('/images/savane/savane.jpg')}}" alt="La Savane" class="d-block w-100">
+																				<div class="carousel-caption text-primary">
+																					<h4>La Savane</h4>
+																				</div>
+																			</div>
+																			<div class="carousel-item ">
+																				<img src="{{asset('/images/jungle/jungle1.jpg')}}" alt="La Jungle" class="d-block w-100">
+																				<div class="carousel-caption text-primary">
+																					<h4>La Jungle</h4>
+																				</div>
+																			</div>
+																			<div class="carousel-item ">
+																				<img src="{{asset('/Images/Marais/Marais.jpg')}}" alt="Le Marais" class="d-block w-100">
+																				<div class="carousel-caption text-primary">
+																					<h4>Les marais</h4>
+																				</div>
+																			</div>
+																		</div>
+																		<button class="carousel-control-prev" type="button" data-bs-target="#carrousel1" data-bs-slide="prev">
+																			<span class="carousel-control-prev-icon"></span>
+																		</button>
+																		<button class="carousel-control-next" type="button" data-bs-target="#carrousel1" data-bs-slide="next">
+																			<span class="carousel-control-next-icon"></span>
+																		</button>
+																	</div>
+																</div> #}
 		<!-- <p> Partez à la découverte des animaux de la Savane, la Jungle et des Marais</p> -->
+
+
 	</section>
 
 	<section class="container-fluid services bg-secondary text-primary d-flex p-5">
