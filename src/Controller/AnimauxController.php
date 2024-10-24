@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Animaux;
 use App\Form\AddanimalFormType;
+use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +22,7 @@ class AnimauxController extends AbstractController
         ]);
     }
     #[Route('/ajouter', name: 'add')]
-    public function addanimal(Request $request, EntityManagerInterface $em): Response
+    public function addanimal(Request $request, EntityManagerInterface $em, PictureService $pictureService): Response
     {
         $animal = new Animaux();
         $animalForm = $this->createForm(AddanimalFormType::class, $animal);
@@ -29,6 +30,10 @@ class AnimauxController extends AbstractController
         $animalForm->handleRequest($request);
 
         if ($animalForm->isSubmitted() && $animalForm->isValid()) {
+            $image = $animalForm->get('image')->getdata();
+            $imageLoad = $pictureService->square($image, 'animal', 300);
+            $animal->setImage($imageLoad);
+
             $em->persist($animal);
             $em->flush();
 
