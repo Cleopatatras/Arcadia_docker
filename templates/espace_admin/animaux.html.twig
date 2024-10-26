@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}animaux liste
+{% endblock %}
+
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			{% include "espace_admin/_adminnav.html.twig" %}
+
+			<main class="col-9 border border-secondary text-secondary p-2">
+
+				<h1>liste des animaux</h1>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Nom</th>
+							<th scope="col">Race</th>
+							<th scope="col">Habitat</th>
+							<th scope="col">Image</th>
+							<th scope="col">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for animal in animaux %}
+							<tr>
+								<td>{{animal.nom}}</td>
+								<td>{{animal.race}}</td>
+								<td>{{animal.habitat.nom}}</td>
+								<td><img src="{{ asset('uploads/animal/mini/300x300-') ~ animal.image}}" alt="{{animal.nom}}" class="img-thumbnail"></td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				<a href='/espace/admin' class="btn btn secondary" role="button">retour à l'espace administrateur</a>
+			</main>
+		</div>
+	</div>
+
+{% endblock %}

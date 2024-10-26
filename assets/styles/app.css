@@ -12030,18 +12030,17 @@ p {
 }
 
 .presentation1 {
-  max-width: 50%;
+  width: 40%;
   text-align: center;
+  padding: 8vh;
 }
 
-.carrousel1 {
-  max-width: 193px;
-  max-height: 270px;
+.presentation2 {
+  width: 60%;
 }
 
-.carousel-inner img {
-  max-height: 270px;
-  max-width: 193px;
+.habitat img {
+  max-width: 100%;
 }
 
 .services {
@@ -12050,7 +12049,7 @@ p {
 }
 
 .services img {
-  width: 50%;
+  width: 65%;
 }
 
 .creation {
@@ -12088,4 +12087,13 @@ p {
 
 .preview {
   display: none;
+}
+
+.card-body a {
+  text-decoration: none;
+  color: #522da0;
+}
+
+.table {
+  color: #522da0 !important;
 }/*# sourceMappingURL=app.css.map */

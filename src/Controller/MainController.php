@@ -20,4 +20,9 @@ class MainController extends AbstractController
     {
         return $this->render('main/mentions.html.twig');
     }
+    #[route('/infoPrat', name: 'app_info_prat')]
+    public function infos(): Response
+    {
+        return $this->render('main/infoPrat.html.twig');
+    }
 }

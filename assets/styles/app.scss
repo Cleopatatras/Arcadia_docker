@@ -76,24 +76,27 @@ p {
   align-items: center;
 }
 
+//-------------------------- Page principale ----------------
+
 .presentation1 {
-  max-width: 50%;
+  width: 40%;
   text-align: center;
+  padding: 8vh;
 }
-.carrousel1 {
-  max-width: 193px;
-  max-height: 270px;
+.presentation2 {
+  // display: flex;
+  // flex-direction: column;
+  width: 60%;
 }
-.carousel-inner img {
-  max-height: 270px;
-  max-width: 193px;
+.habitat img {
+  max-width: 100%;
 }
 .services {
   text-align: center;
   align-items: center;
 }
 .services img {
-  width: 50%;
+  width: 65%;
 }
 .creation {
   background: $secondary;
@@ -131,4 +134,17 @@ p {
 //-------------------------- Page habitat --------------------------
 .preview {
   display: none;
+}
+
+//--------------------------- Page espace admin----------------------
+
+.card-body a {
+  text-decoration: none;
+  color: $blue;
+}
+
+//---------------------------Page Info Pratiques --------------------
+
+.table {
+  color: $blue !important;
 }

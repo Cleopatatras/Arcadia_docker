@@ -1,20 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello NourritureController!{% endblock %}
+{% block title %}Ajout nourriture
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	<div class="container">
+		<div class="row">
+			{% include "espace_admin/_adminnav.html.twig" %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Env/Workspace/Docker/Arcadia_docker/app/src/Controller/NourritureController.php</code></li>
-        <li>Your template at <code>C:/Env/Workspace/Docker/Arcadia_docker/app/templates/nourriture/index.html.twig</code></li>
-    </ul>
-</div>
+			<main class="col-9 border border-secondary text-secondary p-2">
+				<h1>Ajouter une nourriture</h1>
+
+				{{ form_start(nourritureForm) }}
+				<p style="p-2">{{ form_row(nourritureForm.nom) }}</p>
+				<p style="p-2">{{ form_row(nourritureForm.description) }}</p>
+				<p style="p-2">{{ form_row(nourritureForm.image) }}</p>
+
+				<button class="btn btn-secondary text-primary" type=" submit">Ajouter</button>
+				{{ form_end(nourritureForm) }}
+
+
+			</main>
+		</div>
+	</div>
+
+
 {% endblock %}

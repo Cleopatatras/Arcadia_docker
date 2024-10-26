@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Animaux;
 use App\Form\AddanimalFormType;
+use App\Repository\AnimauxRepository;
 use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,12 +16,13 @@ use Symfony\Component\Routing\Attribute\Route;
 class AnimauxController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(): Response
+    public function index(AnimauxRepository $animauxRepository): Response
     {
-        return $this->render('animaux/index.html.twig', [
-            'controller_name' => 'AnimauxController',
-        ]);
+        $animals = $animauxRepository->findAll();
+        return $this->render('animaux/index.html.twig', compact('animals'));
     }
+
+
     #[Route('/ajouter', name: 'add')]
     public function addanimal(Request $request, EntityManagerInterface $em, PictureService $pictureService): Response
     {
