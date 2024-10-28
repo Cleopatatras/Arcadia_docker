@@ -33,7 +33,7 @@
 
 				<figure class="figure m-2">
 					<a href="/jungle"><img src="{{asset('/images/jungle/jungle1.jpg')}}" class="figure-img img-fluid rounded-5" alt="la jungle"></a>
-
+					<h4 class="imgHover p-5">en savoir plus</h4>
 					<figcaption class="figure-caption text-center">
 						<h4>La Jungle</h4>
 					</figcaption>
@@ -41,24 +41,28 @@
 
 				<figure class="figure m-2">
 					<a href="/savane"><img src="{{asset('/images/savane/savane2.jpeg')}}" class="figure-img img-fluid rounded-5" alt="la savane"></a>
+					<h4 class="imgHover p-5">en savoir plus</h4>
 					<figcaption class="figure-caption text-center">
 						<h4>La Savane</h4>
+
 					</figcaption>
 				</figure>
 				<figure class="figure m-2">
 					<a href="/marais"><img src="{{asset('/images/marais/marais.jpg')}}" class="figure-img img-fluid rounded-5" alt="le marais"></a>
+					<h4 class="imgHover p-5">en savoir plus</h4>
 					<figcaption class="figure-caption text-center">
 						<h4>Le marais</h4>
+
 					</figcaption>
 				</figure>
 
 			</div>
-			<h3 class="text-center">Cliquez pour en savoir plus</h3>
+
 		</div>
 
 	</div>
 </section>
-<h2 class="text-center">Partez à la découverte des animaux de la Savane, la Jungle et des Marais</h2>
+<h2 class="text-center mb-3">Partez à la découverte des animaux de la Savane, la Jungle et des Marais</h2>
 <section class="container-fluid services bg-secondary text-primary d-flex p-5">
 	<div class="guide">
 		<h3>Des visites guidées vous sont proposées</h3>
@@ -82,7 +86,36 @@
 </section>
 <section class=" container-fluid presentation text-secondary m-4 d-flex">
 
-	<div class="Avis"></div>
+	<div class="Avis">
 
-	<h2 class="text-secondary">Nos visiteurs donnent leurs avis ! et vous ?</h2>
+		<h2 class="text-secondary text-center">Nos visiteurs donnent leurs avis ! et vous ?</h2>
+		<div class="card" style="width: 18rem;">
+			<div class="card-body">
+				<h5 class="card-title">Pseudo</h5>
+				<h6 class="card-subtitle mb-2 text-body-secondary">Etoiles /5</h6>
+				<p class="card-text">Le plus beau zoo du monde !</p>
+				<a href="#" class="card-link text-tertiary">Laisser mon avis</a>
+			</div>
+		</div>
+		<div class="modal" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Laisser mon avis</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<p>Nombre d'étoiles /5</p>
+						<p>commentaire:</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">annuler</button>
+						<button type="button" class="btn btn-primary">envoyer</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
 </section>{% endblock %}

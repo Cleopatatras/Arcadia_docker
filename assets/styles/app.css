@@ -12043,6 +12043,19 @@ p {
   max-width: 100%;
 }
 
+.imgHover {
+  visibility: hidden;
+  z-index: 5;
+  position: absolute;
+  top: 59%;
+  left: 10rem;
+  color: #f5f5dc;
+}
+
+.figure:hover .imgHover {
+  visibility: visible;
+}
+
 .services {
   text-align: center;
   align-items: center;
