@@ -20,20 +20,20 @@ class CompteRenduType extends AbstractType
                 'widget' => 'single_text',
             ])
             ->add('etat_animal')
-            ->add('grammage')
-            ->add('detail')
-            ->add('animal', EntityType::class, [
-                'class' => Animaux::class,
-                'choice_label' => 'nom',
-            ])
             ->add('user', EntityType::class, [
                 'class' => Users::class,
                 'choice_label' => 'username',
+            ])
+            ->add('animal', EntityType::class, [
+                'class' => Animaux::class,
+                'choice_label' => 'nom',
             ])
             ->add('nourriture', EntityType::class, [
                 'class' => Nourriture::class,
                 'choice_label' => 'nom',
             ])
+            ->add('grammage')
+            ->add('detail')
         ;
     }
 

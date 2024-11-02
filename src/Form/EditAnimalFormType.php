@@ -11,7 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Image;
 
-class AddanimalFormType extends AbstractType
+class EditAnimalFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -19,7 +19,7 @@ class AddanimalFormType extends AbstractType
             ->add('nom')
             ->add('race')
             ->add('image', FileType::class, [
-                'label' => 'Image',
+                'label' => 'Nouvelle image',
                 'mapped' => false,
                 'attr' => [
                     'accept' => 'image/png, image/jpeg, image/webp'

@@ -71,7 +71,7 @@ final class CompteRenduController extends AbstractController
     #[Route('/{id}', name: 'app_compte_rendu_delete', methods: ['POST'])]
     public function delete(Request $request, CompteRendu $compteRendu, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$compteRendu->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $compteRendu->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($compteRendu);
             $entityManager->flush();
         }

@@ -6,7 +6,7 @@
 
 {% block body %}
 
-	<div class="container">
+	<div class="container text-tertiary">
 		<div class="row">
 			{% include "espace_admin/_adminnav.html.twig" %}
 
@@ -14,7 +14,7 @@
 
 				<h1>liste des animaux</h1>
 
-				<table class="table table-striped">
+				<table class="table table-striped text-tertiary">
 					<thead>
 						<tr>
 							<th scope="col">Nom</th>
@@ -31,7 +31,17 @@
 								<td>{{animal.race}}</td>
 								<td>{{animal.habitat.nom}}</td>
 								<td><img src="{{ asset('uploads/animal/mini/300x300-') ~ animal.image}}" alt="{{animal.nom}}" class="img-thumbnail"></td>
+								<td>
+									<a href="{{ path('app_animaux_edit', {'id': animal.id}) }}">Modifier</a>
+									<a href="{{ path('app_animaux_delete', {'id': animal.id}) }}">Supprimer</a>
+								</td>
+
 							</tr>
+						{% else %}
+							<tr>
+								<td colspan="6">Aucun enregistrement</td>
+							</tr>
+
 						{% endfor %}
 					</tbody>
 				</table>
