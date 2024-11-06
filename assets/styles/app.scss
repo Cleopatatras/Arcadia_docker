@@ -157,11 +157,23 @@ p {
 }
 .table a {
   text-decoration: none;
-  color: $tertiary;
+  color: $tertiary !important;
 }
 
 //---------------------------Page Info Pratiques --------------------
 
 .table {
   color: $blue !important;
+}
+
+//---------------------------Page Véto -------------------------------
+
+.compterendu {
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+  text-align: left;
+  padding: 5rem;
+}
+.required {
+  padding: 20px;
 }

@@ -8,11 +8,10 @@ use App\Entity\Nourriture;
 use App\Entity\Users;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CompteRenduType extends AbstractType
+class CompteRendu1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -20,29 +19,20 @@ class CompteRenduType extends AbstractType
             ->add('date', null, [
                 'widget' => 'single_text',
             ])
-            ->add('etat_animal', TextareaType::class, [
-                'attr' => [
-                    'placeholder' => 'entrer les infos de l\'animal',
-                    'rows' => 5,
-                ]
+            ->add('etat_animal')
+            ->add('grammage')
+            ->add('detail')
+            ->add('animal', EntityType::class, [
+                'class' => Animaux::class,
+                'choice_label' => 'id',
             ])
             ->add('user', EntityType::class, [
                 'class' => Users::class,
-                'choice_label' => 'username',
-            ])
-            ->add('animal', EntityType::class, [
-                'class' => Animaux::class,
-                'choice_label' => 'nom',
+                'choice_label' => 'id',
             ])
             ->add('nourriture', EntityType::class, [
                 'class' => Nourriture::class,
-                'choice_label' => 'nom',
-            ])
-            ->add('grammage')
-            ->add('detail', TextareaType::class, [
-                'attr' => [
-                    'rows' => 5,
-                ]
+                'choice_label' => 'id',
             ])
         ;
     }

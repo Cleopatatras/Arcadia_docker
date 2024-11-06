@@ -14,6 +14,16 @@
 
 				<h1>liste des animaux</h1>
 
+				<form method="get" action="{{ path('app_espace_admin_animaux') }}">
+					<label for="nom">Nom :</label>
+					<input type="text" id="nom" name="nom" value="{{ nom ?? '' }}">
+
+					<label for="race">Race :</label>
+					<input type="text" id="espece" name="espece" value="{{ espece ?? '' }}">
+
+					<button type="submit">Filtrer</button>
+				</form>
+
 				<table class="table table-striped text-tertiary">
 					<thead>
 						<tr>
@@ -32,8 +42,8 @@
 								<td>{{animal.habitat.nom}}</td>
 								<td><img src="{{ asset('uploads/animal/mini/300x300-') ~ animal.image}}" alt="{{animal.nom}}" class="img-thumbnail"></td>
 								<td>
-									<a href="{{ path('app_animaux_edit', {'id': animal.id}) }}">Modifier</a>
-									<a href="{{ path('app_animaux_delete', {'id': animal.id}) }}">Supprimer</a>
+									<a class="text-tertiary" href="{{ path('app_animaux_edit', {'id': animal.id}) }}">Modifier</a>
+									<a class="text-tertiary" href="{{ path('app_animaux_show', {'id': animal.id}) }}">Voir</a>
 								</td>
 
 							</tr>

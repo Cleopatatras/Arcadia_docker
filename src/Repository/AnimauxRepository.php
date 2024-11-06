@@ -16,6 +16,34 @@ class AnimauxRepository extends ServiceEntityRepository
         parent::__construct($registry, Animaux::class);
     }
 
+    public function findDistinctRace(): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        // Requête pour récupérer les races uniques
+        $query = $entityManager->createQuery(
+            'SELECT DISTINCT a.race 
+         FROM App\Entity\Animaux a
+         ORDER BY a.race ASC'
+        );
+
+        return array_column($query->getResult(), 'race');
+    }
+
+    public function findDistinctNom(): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        // Requête pour récupérer les noms uniques
+        $query = $entityManager->createQuery(
+            'SELECT DISTINCT a.nom 
+         FROM App\Entity\Animaux a
+         ORDER BY a.nom ASC'
+        );
+
+        return array_column($query->getResult(), 'nom');
+    }
+
     //    /**
     //     * @return Animaux[] Returns an array of Animaux objects
     //     */

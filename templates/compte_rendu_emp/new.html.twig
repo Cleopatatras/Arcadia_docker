@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CompteRendu{% endblock %}
+
+{% block body %}
+    <h1>Create new CompteRendu</h1>
+
+    {{ include('compte_rendu_emp/_form.html.twig') }}
+
+    <a href="{{ path('app_compte_rendu_emp_index') }}">back to list</a>
+{% endblock %}

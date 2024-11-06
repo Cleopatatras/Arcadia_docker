@@ -51,6 +51,14 @@ class AnimauxController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}', name: '_show', methods: ['GET'])]
+    public function show(Animaux $animal): Response
+    {
+        return $this->render('animaux/show.html.twig', [
+            'animal' => $animal,
+        ]);
+    }
+
     #[Route('/edition/{id}', '_edit')]
 
     public function edit(Animaux $animal, Request $request, EntityManagerInterface $em, PictureService $pictureService): Response
@@ -80,20 +88,19 @@ class AnimauxController extends AbstractController
         ]);
     }
 
-    #[Route('/supprimer/{id}', name: '_delete')]
+    #[Route('/delete/{id}', name: '_delete', methods: ['POST'])]
     public function delete(Request $request, Animaux $animal, EntityManagerInterface $em): Response
     {
-        if (
-            $this->isCsrfTokenValid(
-                'delete' . $animal->getId(),
-                token: $request->getPayload()->getString('_token')
-            )
-        ) {
+        // Vérifie la validité du token CSRF pour éviter les attaques CSRF
+        if ($this->isCsrfTokenValid('delete' . $animal->getId(), $request->request->get('_token'))) {
             $em->remove($animal);
             $em->flush();
-        }
-        $this->addFlash('success', 'Animal supprimé');
 
-        return $this->redirectToRoute('app_espace_admin');
+            $this->addFlash('success', 'Animal supprimé');
+        } else {
+            $this->addFlash('error', 'Token CSRF invalide');
+        }
+
+        return $this->redirectToRoute('app_animaux_index');
     }
 }

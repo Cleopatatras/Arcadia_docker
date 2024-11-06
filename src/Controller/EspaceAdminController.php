@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\AnimauxRepository;
 use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -39,14 +40,32 @@ class EspaceAdminController extends AbstractController
     // afficher la liste des animaux :
 
     #[Route('/espace/admin/animaux', name: 'app_espace_admin_animaux')]
-    public function animaux(AnimauxRepository $animauxRepository): Response
+    public function animaux(AnimauxRepository $animauxRepository, Request $request): Response
     {
-        $animaux = $animauxRepository->findBy([], ['nom' => 'asc']);
+        //mettre en place le filtre
+        $nom = $request->query->get('nom');
+        $race = $request->query->get('race');
+
+        // criteres de filtres
+        $critere = [];
+        if ($nom) {
+            $critere['nom'] = $nom;
+        }
+        if ($race) {
+            $critere['race'] = $race;
+        }
+
+        $animaux = $animauxRepository->findBy($critere, ['nom' => 'asc']);
+        $nom = $animauxRepository->findDistinctNom();
+        $race = $animauxRepository->findDistinctRace();
 
         return $this->render(
             'espace_admin/animaux.html.twig',
-            compact('animaux')
-
+            [
+                'animaux' => $animaux,
+                'nom' => $nom,
+                'race' => $race,
+            ]
         );
     }
 
