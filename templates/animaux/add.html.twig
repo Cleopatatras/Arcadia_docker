@@ -5,17 +5,25 @@
 
 {% block body %}
 
-	<div class="container contact bg-secondary text-primary w20">
-		<h1>Ajouter un animal</h1>
-		{{ form_start(animalForm) }}
-		<p style="p-2">
-			{{ form_row(animalForm.nom) }}</p>
-		<p style="p-2">{{ form_row(animalForm.race) }}</p>
-		<p style="p-2">{{ form_row(animalForm.habitat) }}</p>
-		<p style="p-2">{{ form_row(animalForm.image) }}</p>
+	<div class="container">
+		<div class="row">
+			{% include "espace_admin/_adminnav.html.twig" %}
 
-		<button class="btn btn-secondary text-primary" type=" submit">Ajouter</button>
-		{{ form_end(animalForm) }}
+			<main class="col-9 border border-secondary text-secondary p-2">
+				<h1>Ajouter un animal</h1>
+
+				{{ form_start(animalForm) }}
+				<p style="p-2">{{ form_row(animalForm.nom) }}</p>
+				<p style="p-2">{{ form_row(animalForm.race) }}</p>
+				<p style="p-2">{{ form_row(animalForm.habitat) }}</p>
+				<p style="p-2">{{ form_row(animalForm.image) }}</p>
+
+				<button class="btn btn-secondary text-primary" type=" submit">Ajouter</button>
+				{{ form_end(animalForm) }}
+
+
+			</main>
+		</div>
 	</div>
 
 

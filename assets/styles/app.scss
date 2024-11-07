@@ -1,10 +1,12 @@
 $primary: #f5f5dc;
 $secondary: #a0522d;
+$tertiary: #522da0;
 $beige: #d0a996;
 $blue: #522da0;
 $green: #2da052;
 $text-primary: #f5f5dc;
 $text-secondary: #a0522d;
+$text-tertiary: #522da0;
 $font-family-serif: "Merriweather", serif !default;
 $font-family-sans-serif: "Playwrite", sans-serif !default;
 $bs-body-color: #a0522d !important;
@@ -76,28 +78,43 @@ p {
   align-items: center;
 }
 
+//-------------------------- Page principale ----------------
+
 .presentation1 {
-  max-width: 50%;
+  width: 40%;
   text-align: center;
+  padding: 8vh;
 }
-.carrousel1 {
-  max-width: 193px;
-  max-height: 270px;
+.presentation2 {
+  // display: flex;
+  // flex-direction: column;
+  width: 60%;
 }
-.carousel-inner img {
-  max-height: 270px;
-  max-width: 193px;
+.habitat img {
+  max-width: 100%;
+}
+.imgHover {
+  visibility: hidden;
+  z-index: 5;
+  position: absolute;
+  top: 59%;
+  left: 10rem;
+  color: $primary;
+}
+.figure:hover .imgHover {
+  visibility: visible;
 }
 .services {
   text-align: center;
   align-items: center;
 }
 .services img {
-  width: 50%;
+  width: 65%;
 }
 .creation {
   background: $secondary;
 }
+
 //--------------------------------------- style de la page habitat --------------------------------
 
 .title {
@@ -126,4 +143,37 @@ p {
   margin-top: 5em;
   margin-bottom: 3em;
   padding: 2em;
+}
+//-------------------------- Page habitat --------------------------
+.preview {
+  display: none;
+}
+
+//--------------------------- Page espace admin----------------------
+
+.card-body a {
+  text-decoration: none;
+  color: $blue;
+}
+.table a {
+  text-decoration: none;
+  color: $tertiary !important;
+}
+
+//---------------------------Page Info Pratiques --------------------
+
+.table {
+  color: $blue !important;
+}
+
+//---------------------------Page Véto -------------------------------
+
+.compterendu {
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+  text-align: left;
+  padding: 5rem;
+}
+.required {
+  padding: 20px;
 }

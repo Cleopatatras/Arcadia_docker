@@ -5,6 +5,7 @@
 
 {% block body %}
 
+
 	<div class="container-fluid entete d-flex text-primary">
 
 		<div class="bienvenue col-lg-4">
@@ -15,76 +16,106 @@
 		</div>
 	</div>
 
-	<section class="container presentation text-secondary m-4 d-flex ">
+	<section class="container-fluid presentation text-secondary m-4 d-flex">
 
-		<div class="presentation1">
-			<h4>Au milieu de la mystérieuse forêt de Brocéliande se trouve notre zoo ARCADIA</h4>
-			<p>Venez rencontrer nos animaux mystérieux</p>
-			<h4>Nos habitats</h4>
-			<p>Dans un environnement adapté, responsable, écologique et indépendant énergétiquement</p>
-			<p>Nos animaux de la savane, de la jungle et des marais vous attendent</p>
+		<div class="presentation1 d-flex flex-column align-items-center align-bottom">
+			<div class="align-middle p-50">
+				<h4>Au milieu de la mystérieuse forêt de Brocéliande se trouve notre zoo ARCADIA</h4>
+				<p>Venez rencontrer nos animaux mystérieux</p>
+				<h4>Nos habitats</h4>
+				<p>Dans un environnement adapté, responsable, écologique et indépendant énergétiquement</p>
+				<p>Nos animaux de la savane, de la jungle et des marais vous attendent</p>
+			</div>
+
 		</div>
-		<div class="presentationHabitats"></div>
+		<div class="presentation2 d-flex flex-column mb-1">
+			<div class="presentationHabitats d-flex">
 
+				<figure class="figure m-2">
+					<a href="/jungle"><img src="{{asset('/images/jungle/jungle1.jpg')}}" class="figure-img img-fluid rounded-5" alt="la jungle"></a>
+					<h4 class="imgHover p-5">en savoir plus</h4>
+					<figcaption class="figure-caption text-center">
+						<h4>La Jungle</h4>
+					</figcaption>
+				</figure>
 
-		<div class="container carrousel1">
-			<div class="carousel slide" data-bs-ride="carousel" id="carrousel1">
-				<div class="carousel-indicators">
-					<button type="button" data-bs-target="#carrousel1" data-bs-slide-to="0" class="active"></button>
-					<button type="button" data-bs-target="#carrousel1" data-bs-slide-to="1"></button>
-					<button type="button" data-bs-target="#carrousel1" data-bs-slide-to="2"></button>
-				</div>
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img src="{{asset('/images/savane/savane.jpg')}}" alt="La Savane" class="d-block w-100">
-						<div class="carousel-caption text-primary">
-							<h4>La Savane</h4>
-						</div>
-					</div>
-					<div class="carousel-item ">
-						<img src="{{asset('/images/jungle/jungle1.jpg')}}" alt="La Jungle" class="d-block w-100">
-						<div class="carousel-caption text-primary">
-							<h4>La Jungle</h4>
-						</div>
-					</div>
-					<div class="carousel-item ">
-						<img src="{{asset('/Images/Marais/Marais.jpg')}}" alt="Le Marais" class="d-block w-100">
-						<div class="carousel-caption text-primary">
-							<h4>Les marais</h4>
-						</div>
-					</div>
-				</div>
-				<button class="carousel-control-prev" type="button" data-bs-target="#carrousel1" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon"></span>
-				</button>
-				<button class="carousel-control-next" type="button" data-bs-target="#carrousel1" data-bs-slide="next">
-					<span class="carousel-control-next-icon"></span>
-				</button>
+				<figure class="figure m-2">
+					<a href="/savane"><img src="{{asset('/images/savane/savane2.jpeg')}}" class="figure-img img-fluid rounded-5" alt="la savane"></a>
+					<h4 class="imgHover p-5">en savoir plus</h4>
+					<figcaption class="figure-caption text-center">
+						<h4>La Savane</h4>
+
+					</figcaption>
+				</figure>
+				<figure class="figure m-2">
+					<a href="/marais"><img src="{{asset('/images/marais/marais.jpg')}}" class="figure-img img-fluid rounded-5" alt="le marais"></a>
+					<h4 class="imgHover p-5">en savoir plus</h4>
+					<figcaption class="figure-caption text-center">
+						<h4>Le marais</h4>
+
+					</figcaption>
+				</figure>
+
+			</div>
+
+		</div>
+
+	</div>
+</section>
+<h2 class="text-center mb-3">Partez à la découverte des animaux de la Savane, la Jungle et des Marais</h2>
+<section class="container-fluid services bg-secondary text-primary d-flex p-5">
+	<div class="guide">
+		<h3>Des visites guidées vous sont proposées</h3>
+		<img src="{{asset('/images/guide.png')}}" alt="guide">
+
+	</div>
+	<div class="train">
+		<img src="{{asset('/images/train.png')}}" alt="train">
+
+		<h3 style="p-3">le petit train</h3>
+	</div>
+	<div class="resto">
+		<h3>Restauration rapide</h3>
+		<img src="{{asset('/images/assiette.png')}}" alt="resto">
+
+	</div>
+	<div class="services">
+		<h2>Services sur place</h2>
+		<button type="button" class="btn btn-primary">En savoir plus</button>
+	</div>
+</section>
+<section class=" container-fluid presentation text-secondary m-4 d-flex">
+
+	<div class="Avis">
+
+		<h2 class="text-secondary text-center">Nos visiteurs donnent leurs avis ! et vous ?</h2>
+		<div class="card" style="width: 18rem;">
+			<div class="card-body">
+				<h5 class="card-title">Pseudo</h5>
+				<h6 class="card-subtitle mb-2 text-body-secondary">Etoiles /5</h6>
+				<p class="card-text">Le plus beau zoo du monde !</p>
+				<a href="#" class="card-link text-tertiary">Laisser mon avis</a>
 			</div>
 		</div>
-		<!-- <p> Partez à la découverte des animaux de la Savane, la Jungle et des Marais</p> -->
-	</section>
-
-	<section class="container-fluid services bg-secondary text-primary d-flex p-5">
-		<div class="guide">
-			<p>Des visites guidées vous sont proposées</p>
-			<img src="{{asset('/images/guide.png')}}" alt="guide">
-
+		<div class="modal" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Laisser mon avis</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<p>Nombre d'étoiles /5</p>
+						<p>commentaire:</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">annuler</button>
+						<button type="button" class="btn btn-primary">envoyer</button>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div class="train">
-			<img src="{{asset('/images/train.png')}}" alt="train">
 
-			<p>le petit train</p>
-		</div>
-		<div class="resto">
-			<p>Restauration rapide</p>
-			<img src="{{asset('/images/assiette.png')}}" alt="resto">
 
-		</div>
-		<div class="services">
-			<h3>Services sur place</h3>
-			<button type="button" class="btn btn-primary">En savoir plus</button>
-		</div>
-	</section>
-
-{% endblock %}
+	</div>
+</section>{% endblock %}

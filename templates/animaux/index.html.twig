@@ -1,20 +1,108 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AnimauxController!{% endblock %}
+{% block title %}Les animaux
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	{# Entete title #}
+	<div class="container-fluid entete text-primary d-flex justify-content-center h-33">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Env/Workspace/Docker/Arcadia_docker/app/src/Controller/AnimauxController.php</code></li>
-        <li>Your template at <code>C:/Env/Workspace/Docker/Arcadia_docker/app/templates/animaux/index.html.twig</code></li>
-    </ul>
-</div>
+		<div class="container bg-secondary title">
+			<h1 class="text-center">Nos animaux</h1>
+		</div>
+	</div>
+
+	{# Section savane #}
+
+	<section class="section1 container">
+		<div class="container d-flex flex-column p-3">
+			<div class="text_section1 justify-content-center">
+
+				<h2>Nos animaux de la SAVANE</h2>
+			</div>
+
+			{# //Création des cartes animaux: #}
+
+			<div class="card container d-flex flex-row justify-content-center mb-3" style="width: 70rem; ">
+
+
+				{% for animal in animauxSavane %}
+					<div class="card" style="width: 18rem;">
+						<img src="{{ asset('uploads/animal/mini/300x300-') ~animal.image }}" class="card-img-top" alt="{{ animal.nom }}">
+
+						<div class="card-body">
+							<h5 class="card-title">{{ animal.nom }}</h5>
+							<p class="card-text">{{ animal.race }}</p>
+							<a href="#" class="btn btn-secondary text-primary">Voir tous les détails</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+		</div>
+
+	</section>
+	<section class="section1 container-fluid bg-secondary text-primary">
+		<div class="container d-flex flex-column p-3">
+			<div class="text_section1 justify-content-center text-primary">
+
+				<h2>Nos animaux de la JUNGLE</h2>
+			</div>
+
+			{# //Création des cartes animaux: #}
+
+			<div class="card container d-flex flex-row justify-content-center mb-3" style="width: 70rem; ">
+
+				{% for animal in animauxJungle %}
+					<div class="card" style="width: 18rem;">
+						<img src="{{ asset('uploads/animal/mini/300x300-') ~ animal.image }}" class="card-img-top" alt="{{ animal.nom }}">
+
+						<div class="card-body">
+							<h5 class="card-title">{{ animal.nom }}</h5>
+							<p class="card-text">{{ animal.race }}</p>
+							<a href="#" class="btn btn-primary text-secondary">Voir tous les détails</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+		</div>
+
+	</section>
+
+	<section class="section1 container">
+		<div class="container d-flex flex-column p-3">
+			<div class="text_section1 justify-content-center">
+
+				<h2>Nos animaux du MARAIS</h2>
+			</div>
+
+			{# //Création des cartes animaux: #}
+
+			<div class="card container d-flex flex-row justify-content-center mb-3" style="width: 70rem; ">
+
+
+				{% for animal in animauxMarais %}
+					<div class="card" style="width: 18rem;">
+						<img src="{{ asset('uploads/animal/mini/300x300-') ~ animal.image }}" class="card-img-top" alt="{{ animal.nom }}">
+
+						<div class="card-body">
+							<h5 class="card-title">{{ animal.nom }}</h5>
+							<p class="card-text">{{ animal.race }}</p>
+							<a href="#" class="btn btn-secondary text-primary">Voir tous les détails</a>
+						</div>
+					</div>
+				{% endfor %}
+
+
+			</div>
+
+		</div>
+
+	</section>
+
+	{# <img src="{{asset('assets/images/jungle/jungle1.jpg')}}" alt="Image de jungle" class="rounded img-fluid" width="40%"> #}
+
+
 {% endblock %}
