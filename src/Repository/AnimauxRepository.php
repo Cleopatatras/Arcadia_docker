@@ -44,6 +44,15 @@ class AnimauxRepository extends ServiceEntityRepository
         return array_column($query->getResult(), 'nom');
     }
 
+    public function findByHabitatId(int $habitatId): array
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.habitat = :habitatId')
+            ->setParameter('habitatId', $habitatId)
+            ->orderBy('a.nom', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
     //    /**
     //     * @return Animaux[] Returns an array of Animaux objects
     //     */

@@ -19,8 +19,16 @@ class AnimauxController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(AnimauxRepository $animauxRepository): Response
     {
-        $animals = $animauxRepository->findAll();
-        return $this->render('animaux/index.html.twig', compact('animals'));
+        // Récupère les animaux pour chaque habitat
+        $animauxSavane = $animauxRepository->findByHabitatId(3); // ID de la savane
+        $animauxJungle = $animauxRepository->findByHabitatId(4); // ID de la jungle
+        $animauxMarais = $animauxRepository->findByHabitatId(5); // ID du marais
+
+        return $this->render('animaux/index.html.twig', [
+            'animauxSavane' => $animauxSavane,
+            'animauxJungle' => $animauxJungle,
+            'animauxMarais' => $animauxMarais,
+        ]);
     }
 
 

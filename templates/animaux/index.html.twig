@@ -24,21 +24,20 @@
 
 			{# //Création des cartes animaux: #}
 
-			<div class="card container d-flex flex-row justify-content-center mb-3" style="width: 18rem; ">
+			<div class="card container d-flex flex-row justify-content-center mb-3" style="width: 70rem; ">
 
 
-				{% for animal in animals %}
-					<img src="" class="card-img-top" alt="">
-					<div class="card-body">
-						<h5 class="card-title">{{animal.nom}}</h5>
-						<p class="card-text">{{animal.race}}.</p>
-						<p class="card-text">{{animal.habitat.nom}}.</p>
-						<p class="card-text">{{animal.image}}.</p>
+				{% for animal in animauxSavane %}
+					<div class="card" style="width: 18rem;">
+						<img src="{{ asset('uploads/animal/mini/300x300-') ~animal.image }}" class="card-img-top" alt="{{ animal.nom }}">
 
-						<a href="#" class="btn btn-secondary text-primary">Voir tous les détails</a>
+						<div class="card-body">
+							<h5 class="card-title">{{ animal.nom }}</h5>
+							<p class="card-text">{{ animal.race }}</p>
+							<a href="#" class="btn btn-secondary text-primary">Voir tous les détails</a>
+						</div>
 					</div>
 				{% endfor %}
-
 			</div>
 
 		</div>
@@ -53,19 +52,19 @@
 
 			{# //Création des cartes animaux: #}
 
-			<div class="card container d-flex flex-row justify-content-center mb-3" style="width: 18rem; ">
+			<div class="card container d-flex flex-row justify-content-center mb-3" style="width: 70rem; ">
 
+				{% for animal in animauxJungle %}
+					<div class="card" style="width: 18rem;">
+						<img src="{{ asset('uploads/animal/mini/300x300-') ~ animal.image }}" class="card-img-top" alt="{{ animal.nom }}">
 
-				{% for animal in animals %}
-					<img src="" class="card-img-top" alt="">
-					<div class="card-body">
-						<h5 class="card-title">{{animal.nom}}</h5>
-						<p class="card-text">{{animal.race}}.</p>
-						{# <p class="card-text">{{animal.habitat}}.</p> #}
-						<a href="#" class="btn btn-primary text-secondary">Voir tous les détails</a>
+						<div class="card-body">
+							<h5 class="card-title">{{ animal.nom }}</h5>
+							<p class="card-text">{{ animal.race }}</p>
+							<a href="#" class="btn btn-primary text-secondary">Voir tous les détails</a>
+						</div>
 					</div>
 				{% endfor %}
-
 			</div>
 
 		</div>
@@ -81,18 +80,21 @@
 
 			{# //Création des cartes animaux: #}
 
-			<div class="card container d-flex flex-row justify-content-center mb-3" style="width: 18rem; ">
+			<div class="card container d-flex flex-row justify-content-center mb-3" style="width: 70rem; ">
 
 
-				{% for animal in animals %}
-					<img src="" class="card-img-top" alt="">
-					<div class="card-body">
-						<h5 class="card-title">{{animal.nom}}</h5>
-						<p class="card-text">{{animal.race}}.</p>
-						{# <p class="card-text">{{animal.habitat}}.</p> #}
-						<a href="#" class="btn btn-secondary text-primary">Voir tous les détails</a>
+				{% for animal in animauxMarais %}
+					<div class="card" style="width: 18rem;">
+						<img src="{{ asset('uploads/animal/mini/300x300-') ~ animal.image }}" class="card-img-top" alt="{{ animal.nom }}">
+
+						<div class="card-body">
+							<h5 class="card-title">{{ animal.nom }}</h5>
+							<p class="card-text">{{ animal.race }}</p>
+							<a href="#" class="btn btn-secondary text-primary">Voir tous les détails</a>
+						</div>
 					</div>
 				{% endfor %}
+
 
 			</div>
 
