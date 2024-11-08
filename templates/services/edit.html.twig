@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier service
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			{% include "espace_admin/_adminnav.html.twig" %}
+
+			<main class="col-9 border border-secondary text-secondary p-2">
+				<h1>Modifier un service</h1>
+
+				{{ form_start(servicesForm) }}
+				<p style="p-2">{{ form_widget(servicesForm)}}</p>
+
+				<button class="btn btn-secondary text-primary" type=" submit">Modifier</button>
+				{{ form_end(serviceForm) }}
+
+			</main>
+		</div>
+	</div>
+
+
+{% endblock %}

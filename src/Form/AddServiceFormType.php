@@ -22,6 +22,9 @@ class AddServiceFormType extends AbstractType
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description',
+                'attr' => [
+                    'rows' => 7,
+                ]
             ])
             ->add('image', FileType::class, [
                 'label' => 'Image',

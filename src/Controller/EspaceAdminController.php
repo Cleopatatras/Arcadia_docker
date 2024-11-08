@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\AnimauxRepository;
+use App\Repository\ServicesRepository;
 use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -65,6 +66,28 @@ class EspaceAdminController extends AbstractController
                 'animaux' => $animaux,
                 'nom' => $nom,
                 'race' => $race,
+            ]
+        );
+    }
+
+    //Afficher la liste des services
+
+    #[Route('/espace/admin/services', name: 'app_espace_admin_services')]
+    public function services(ServicesRepository $servicesRepository, Request $request): Response
+    {
+        $services = $servicesRepository->findBy([], ['nom' => 'asc']);
+        //mettre en place le filtre
+        $nom = $request->query->get('nom');
+        $description = $request->query->get('description');
+        $image = $request->query->get('image');
+
+        return $this->render(
+            'espace_admin/services.html.twig',
+            [
+                'nom' => $nom,
+                'description' => $description,
+                'image' => $image,
+                'services' => $services,
             ]
         );
     }

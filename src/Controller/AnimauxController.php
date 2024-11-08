@@ -109,6 +109,6 @@ class AnimauxController extends AbstractController
             $this->addFlash('error', 'Token CSRF invalide');
         }
 
-        return $this->redirectToRoute('app_animaux_index');
+        return $this->redirectToRoute('admin');
     }
 }
