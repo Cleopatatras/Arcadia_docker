@@ -17,7 +17,7 @@ class AddNourritureFormType extends AbstractType
             ->add('nom')
             ->add('description')
             ->add('image', FileType::class, [
-                'label' => 'Image de l\'animal',
+                'label' => 'Image de la nourriture',
                 'mapped' => false,
                 'attr' => [
                     'accept' => 'image/png, image/jpeg, image/webp'
