@@ -28,13 +28,17 @@
 
 
 				{% for animal in animauxSavane %}
-					<div class="card" style="width: 18rem;">
+					<div class="card" style="width: 18rem;" data-id="{{ animal.id }}">
 						<img src="{{ asset('uploads/animal/mini/300x300-') ~animal.image }}" class="card-img-top" alt="{{ animal.nom }}">
 
 						<div class="card-body">
 							<h5 class="card-title">{{ animal.nom }}</h5>
 							<p class="card-text">{{ animal.race }}</p>
-							<a href="#" class="btn btn-secondary text-primary">Voir tous les détails</a>
+							<a href="{{ path('app_animaux_detail', {'id': animal.id}) }}" data-url="{{ path('app_animaux_increment_view', {'id': animal.id}) }}" class="btn btn-secondary text-primary increment-view">
+								Voir tous les détails
+							</a>
+
+
 						</div>
 					</div>
 				{% endfor %}
@@ -55,13 +59,15 @@
 			<div class="card container d-flex flex-row justify-content-center mb-3" style="width: 70rem; ">
 
 				{% for animal in animauxJungle %}
-					<div class="card" style="width: 18rem;">
+					<div class="card" style="width: 18rem;" data-id="{{ animal.id }}">
 						<img src="{{ asset('uploads/animal/mini/300x300-') ~ animal.image }}" class="card-img-top" alt="{{ animal.nom }}">
 
 						<div class="card-body">
 							<h5 class="card-title">{{ animal.nom }}</h5>
 							<p class="card-text">{{ animal.race }}</p>
-							<a href="#" class="btn btn-primary text-secondary">Voir tous les détails</a>
+							<a href="{{ path('app_animaux_detail', {'id': animal.id}) }}" data-url="{{ path('app_animaux_increment_view', {'id': animal.id}) }}" class="btn btn-secondary text-primary increment-view">
+								Voir tous les détails
+							</a>
 						</div>
 					</div>
 				{% endfor %}
@@ -84,25 +90,22 @@
 
 
 				{% for animal in animauxMarais %}
-					<div class="card" style="width: 18rem;">
+					<div class="card" style="width: 18rem;" data-id="{{ animal.id }}">
 						<img src="{{ asset('uploads/animal/mini/300x300-') ~ animal.image }}" class="card-img-top" alt="{{ animal.nom }}">
 
 						<div class="card-body">
 							<h5 class="card-title">{{ animal.nom }}</h5>
 							<p class="card-text">{{ animal.race }}</p>
-							<a href="#" class="btn btn-secondary text-primary">Voir tous les détails</a>
+							<a href="{{ path('app_animaux_detail', {'id': animal.id}) }}" data-url="{{ path('app_animaux_increment_view', {'id': animal.id}) }}" class="btn btn-secondary text-primary increment-view">
+								Voir tous les détails
+							</a>
 						</div>
 					</div>
 				{% endfor %}
-
-
 			</div>
 
 		</div>
-
 	</section>
-
-	{# <img src="{{asset('assets/images/jungle/jungle1.jpg')}}" alt="Image de jungle" class="rounded img-fluid" width="40%"> #}
 
 
 {% endblock %}

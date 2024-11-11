@@ -9,14 +9,15 @@ use App\Repository\AnimauxRepository;
 use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/animaux', name: 'app_animaux')]
+
 class AnimauxController extends AbstractController
 {
-    #[Route('/', name: 'index')]
+    #[Route('/animaux', name: 'app_animaux')]
     public function index(AnimauxRepository $animauxRepository): Response
     {
         // Récupère les animaux pour chaque habitat
@@ -32,7 +33,7 @@ class AnimauxController extends AbstractController
     }
 
 
-    #[Route('/ajouter', name: 'add')]
+    #[Route('/animaux/ajouter', name: 'app_animaux_add')]
     public function addanimal(Request $request, EntityManagerInterface $em, PictureService $pictureService): Response
     {
         $animal = new Animaux();
@@ -59,15 +60,22 @@ class AnimauxController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: '_show', methods: ['GET'])]
+    #[Route('/animaux/{id}', name: 'app_animaux_show', methods: ['GET'])]
     public function show(Animaux $animal): Response
     {
         return $this->render('animaux/show.html.twig', [
             'animal' => $animal,
         ]);
     }
+    #[Route('/animaux/detail/{id}', name: 'app_animaux_detail', methods: ['GET'])]
+    public function detail(Animaux $animal): Response
+    {
+        return $this->render('animaux/detail.html.twig', [
+            'animal' => $animal,
+        ]);
+    }
 
-    #[Route('/edition/{id}', '_edit')]
+    #[Route('/animaux/edition/{id}', 'app_animaux_edit')]
 
     public function edit(Animaux $animal, Request $request, EntityManagerInterface $em, PictureService $pictureService): Response
     {
@@ -96,7 +104,7 @@ class AnimauxController extends AbstractController
         ]);
     }
 
-    #[Route('/delete/{id}', name: '_delete', methods: ['POST'])]
+    #[Route('/animaux/delete/{id}', name: 'app_animaux_delete', methods: ['POST'])]
     public function delete(Request $request, Animaux $animal, EntityManagerInterface $em): Response
     {
         // Vérifie la validité du token CSRF pour éviter les attaques CSRF
@@ -110,5 +118,24 @@ class AnimauxController extends AbstractController
         }
 
         return $this->redirectToRoute('admin');
+    }
+
+    #[Route('/animaux/view/{id}', name: 'app_animaux_increment_view', methods: ['POST', 'GET'])]
+    public function incrementView(Animaux $animaux, EntityManagerInterface $em): JsonResponse
+    {
+        $animaux->incrementViews();
+        $em->flush();
+
+        return new JsonResponse(['views' => $animaux->getViews()]);
+    }
+
+    #[Route('/animaux/top10', name: 'app_animaux_top10')]
+    public function top10(EntityManagerInterface $em): Response
+    {
+        $topAnimaux = $em->getRepository(Animaux::class)->findBy([], ['views' => 'DESC'], 10);
+
+        return $this->render('animaux/top10.html.twig', [
+            'topAnimaux' => $topAnimaux,
+        ]);
     }
 }
