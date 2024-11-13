@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const animalButtons = document.querySelectorAll(".increment-view");
 
-  if (animalButtons.length === 0) {
-    console.warn("Aucun bouton de vue trouvé.");
-  }
+  // if (animalButtons.length === 0) {
+  //   console.warn("Aucun bouton de vue trouvé.");
+  // }
 
   animalButtons.forEach((button) => {
     button.addEventListener("click", (event) => {

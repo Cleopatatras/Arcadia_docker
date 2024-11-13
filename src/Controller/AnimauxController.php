@@ -129,13 +129,5 @@ class AnimauxController extends AbstractController
         return new JsonResponse(['views' => $animaux->getViews()]);
     }
 
-    #[Route('/animaux/top10', name: 'app_animaux_top10')]
-    public function top10(EntityManagerInterface $em): Response
-    {
-        $topAnimaux = $em->getRepository(Animaux::class)->findBy([], ['views' => 'DESC'], 10);
 
-        return $this->render('animaux/top10.html.twig', [
-            'topAnimaux' => $topAnimaux,
-        ]);
-    }
 }
