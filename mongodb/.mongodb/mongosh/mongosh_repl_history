@@ -1,0 +1,9 @@
+});
+roles: ["root"]
+pwd: "example",
+user: "root",
+use admin
+db.getUsers();
+use test
+db.getUsers();
+use admin;
