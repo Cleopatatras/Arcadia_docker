@@ -7,12 +7,21 @@ parameters:
     app.jwtsecret : '%env(JWT_SECRET)%'
     uploads_directory: '%kernel.project_dir%/public/uploads/'
     target_directory: '%kernel.project_dir%/public/uploads/images'
+    mongodb_url: '%env(MONGODB_URL)%'
+    mongodb_db: '%env(MONGODB_DB)%'
 
 services:
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            string $mongoUrl: '%env(MONGODB_URL)%'
+            string $databaseName: '%env(MONGODB_DB)%'
+    # App\Service\MongoDBService:
+    #     arguments:
+    #         $mongoUrl: '%mongodb_url%'
+    #         $databaseName: '%mongodb_db%'
 
     # App\Service\PictureServiceNorm:
     #     arguments:

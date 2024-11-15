@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}avis
+{% endblock %}
+
+{% block body %}
+
+	<div class="container-fluid entete text-primary d-flex justify-content-center h-33">
+
+		<div class="container bg-secondary title">
+			<h1 class="text-center">Vos avis !</h1>
+		</div>
+	</div>
+
+	<section>
+		<div class="container mt-4">
+
+			<ul class="list-group">
+
+
+				{% for avi in avis %}
+					<li class="list-group-item">
+						<strong>{{ avi.pseudo }}</strong>
+						<h6>({{ avi.etoiles }}/5)</h6>
+						<h6>{{ avi.title }}</h6>
+						<p>{{ avi.comment }}</p>
+						<em>Posté le
+							{{ avi.created_at|date('d/m/Y H:i') }}</em>
+					</li>
+				{% else %}
+					<li class="list-group-item">Aucun avis pour le moment.</li>
+				{% endfor %}
+			</ul>
+
+		</div>
+
+	</section>
+
+	<div class="mt-4 text-tertiary">
+		<a href="{{ path('app_add_avis') }}" class="btn btn-secondary">Ajouter un avis</a>
+	</div>
+{% endblock %}
