@@ -84,38 +84,62 @@
 		<button type="button" class="btn btn-primary">En savoir plus</button>
 	</div>
 </section>
-<section class=" container-fluid presentation text-secondary m-4 d-flex">
 
-	<div class="Avis">
+<section class="container mt-4">
+	<h2 class="text-center mb-4">Ce que nos visiteurs disent</h2>
 
-		<h2 class="text-secondary text-center">Nos visiteurs donnent leurs avis ! et vous ?</h2>
-		<div class="card" style="width: 18rem;">
-			<div class="card-body">
-				<h5 class="card-title">Pseudo</h5>
-				<h6 class="card-subtitle mb-2 text-body-secondary">Etoiles /5</h6>
-				<p class="card-text">Le plus beau zoo du monde !</p>
-				<a href="#" class="card-link text-tertiary">Laisser mon avis</a>
-			</div>
-		</div>
-		<div class="modal" tabindex="-1">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Laisser mon avis</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body">
-						<p>Nombre d'étoiles /5</p>
-						<p>commentaire:</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">annuler</button>
-						<button type="button" class="btn btn-primary">envoyer</button>
+	<div id="avisCarousel" class="carousel slide" data-bs-ride="carousel">
+		<div class="carousel-inner">
+			{% for avi in avis %}
+				<div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+					<div class="d-flex justify-content-center">
+						<div class="card w-75">
+							<div class="card-body">
+								<h6>
+									{% for i in 1..5 %}
+										{% if i <= avi.etoiles %}
+											<i class="fas fa-star text-warning"></i>
+										{% else %}
+											<i class="far fa-star text-muted"></i>
+										{% endif %}
+									{% endfor %}
+								</h6>
+								<h5 class="card-title">{{ avi.pseudo }}</h5>
+								<h6 class="card-subtitle mb-2 text-muted">{{ avi.title }}</h6>
+								<p class="card-text">{{ avi.comment }}</p>
+								<small class="text-muted">Posté le
+									{{ avi.date }}</small>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
+			{% else %}
+				<div class="carousel-item active">
+					<div class="d-flex justify-content-center">
+						<div class="card w-75">
+							<div class="card-body">
+								<p class="text-center">Aucun avis pour le moment.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
 		</div>
 
-
+		<!-- Contrôles du carrousel -->
+		<button class="carousel-control-prev" type="button" data-bs-target="#avisCarousel" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Précédent</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#avisCarousel" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Suivant</span>
+		</button>
 	</div>
-</section>{% endblock %}
+
+</section>
+
+<div class="mt-4 text-tertiary text-center">
+	<a href="{{ path('app_add_avis') }}" class="btn btn-secondary">Ajouter votre avis</a>
+	<a href="{{ path('app_avis_liste') }}" class="btn btn-secondary">Voir tous les avis</a>
+</div>{% endblock %}

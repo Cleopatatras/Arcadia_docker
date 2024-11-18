@@ -34,7 +34,7 @@ class AvisController extends AbstractController
                 'etoiles' => (int) $data['etoiles'],
                 'title' => $data['title'],
                 'comment' => $data['comment'],
-                'created_at' => new \DateTime(),
+                'date' => (new \DateTime())->format(('d-m-Y')),
                 'isValidated' => false
             ];
 
