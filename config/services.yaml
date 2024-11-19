@@ -9,6 +9,8 @@ parameters:
     target_directory: '%kernel.project_dir%/public/uploads/images'
     mongodb_url: '%env(MONGODB_URL)%'
     mongodb_db: '%env(MONGODB_DB)%'
+    env(MONGODB_URL): ''
+    env(MONGODB_DB): ''
 
 services:
     # default configuration for services in *this* file

@@ -11,19 +11,22 @@
 			<table class="table text-bg-blue">
 				<thead>
 					<tr>
-						<th>du lundi au vendredi</th>
-						<th>samedi</th>
-						<th>dimanche</th>
+						<th>Jour</th>
+						<th>Ouverture</th>
+						<th>Fermeture</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>de 10 h à 18 h</td>
-						<td>de 10 h à 19 h</td>
-						<td>de 10 h à 18 h</td>
-					</tr>
+					{% for horaire in horaires %}
+						<tr>
+							<td>{{ horaire.jour }}</td>
+							<td>{{ horaire.ouverture }}</td>
+							<td>{{ horaire.fermeture }}</td>
+						</tr>
+					{% endfor %}
 				</tbody>
 			</table>
+
 		</div>
 		<div class="carto">
 			<h2>Venir nous voir :</h2>
