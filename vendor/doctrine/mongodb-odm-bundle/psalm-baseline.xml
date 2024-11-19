@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="5.25.0@01a8eb06b9e9cc6cfb6a320bf9fb14331919d505">
+  <file src="config/value_resolver.php">
+    <UndefinedClass>
+      <code><![CDATA[ExpressionLanguage]]></code>
+    </UndefinedClass>
+  </file>
+  <file src="src/Command/LoadDataFixturesDoctrineODMCommand.php">
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[ask]]></code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/DependencyInjection/Configuration.php">
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[arrayNode]]></code>
+      <code><![CDATA[end]]></code>
+      <code><![CDATA[scalarNode]]></code>
+      <code><![CDATA[scalarNode]]></code>
+    </UndefinedInterfaceMethod>
+    <UndefinedMethod>
+      <code><![CDATA[children]]></code>
+    </UndefinedMethod>
+  </file>
+  <file src="tests/Form/Type/GuesserTestType.php">
+    <MissingTemplateParam>
+      <code><![CDATA[GuesserTestType]]></code>
+    </MissingTemplateParam>
+  </file>
+  <file src="tests/ManagerRegistryTest.php">
+    <RedundantCondition>
+      <code><![CDATA[assertSame]]></code>
+    </RedundantCondition>
+  </file>
+</files>
