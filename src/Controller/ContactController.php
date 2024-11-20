@@ -6,53 +6,36 @@ use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Attribute\Route;
 
 class ContactController extends AbstractController
 {
-    #[Route('/contact', name: 'app_contact')]
-    public function index(Request $request): Response
+    #[Route('/contact', name: 'app_contact', methods: ['GET', 'POST'])]
+    public function sendMail(Request $request, MailerInterface $mailer): Response
     {
-        $form = $this->createForm(ContactType::class);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $data = $form->getData();
-            #on génère le token et tout le tintouin:
-            $header = [
-                'typ' => 'JWT',
-                'alg' => 'HS256'
-            ];
-            // // Payload
-            // $payload = [
-
-            // ];
-
-            // // On génère le token
-            // $token = $jwt->generate($header, $payload, $this->getParameter('app.jwtsecret'));
-
-            // // Envoyer l'e-mail
-            // $mail->send(
-            //     'no-reply@openblog.test',
-            //     $user->getEmail(),
-            //     'Demande de contact',
-            //     'register',
-            //     compact('user', 'token') // ['user' => $user, 'token'=>$token]
-            // );
-
-            // $this->addFlash('success', 'Utilisateur inscrit, veuillez cliquer sur le lien reçu pour confirmer votre adresse e-mail');
+        if ($request->isMethod('POST')) {
+            // Récupérer les données du formulaire
+            $emailAddress = $request->request->get('email');
+            $messageContent = $request->request->get('message');
 
 
+            $email = (new Email())
+                ->from($emailAddress)
+                ->to('contact@zooarcadia.com')
+                ->subject('formulaire de contact')
+                ->text($messageContent);
 
+            $mailer->send($email);
+
+            $this->addFlash('success', 'Votre message a été envoyé avec succès.');
+
+            // Redirection ou affichage d'une page
+            return $this->redirectToRoute('app_contact');
         }
 
-
-
-        return $this->render('contact/index.html.twig', [
-            'formulaire' => $form->createView()
-        ]);
+        return $this->render('contact/index.html.twig');
     }
+
 }

@@ -17,16 +17,19 @@
 	{# Formulaire de contact  #}
 
 	<div class="container-fluid contact">
-		<div class="mb-5">
-			<label for="ControlInput1" class="form-label">Votre adresse mail</label>
-			<input type="email" class="form-control" id="ControlInput1" placeholder="nom@example.fr">
-		</div>
-		<div class="mb-5">
-			<label for="ControlTextarea1" class="form-label">Votre message</label>
-			<textarea class="form-control" id="ControlTextarea1" rows="10"></textarea>
-		</div>
-		<div class="col-12">
-			<a href="mailto:esdi90.anne@gmail.com" class="btn btn-secondary">Envoyer</a>
-		</div>
+		<form action="{{ path('app_contact') }}" method="post">
+
+			<div class="mb-5">
+				<label for="ControlInput1" class="form-label">Votre adresse mail</label>
+				<input type="email" name="email" class="form-control" id="ControlInput1" placeholder="nom@example.fr" required>
+			</div>
+			<div class="mb-5">
+				<label for="ControlTextarea1" class="form-label">Votre message</label>
+				<textarea name="message" class="form-control" id="ControlTextarea1" rows="10" required></textarea>
+			</div>
+			<div class="col-12">
+				<button type="submit" class="btn btn-secondary text-primary">Envoyer</button>
+			</div>
+		</form>
 	</div>
 {% endblock %}
