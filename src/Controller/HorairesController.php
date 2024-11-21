@@ -58,7 +58,7 @@ class HorairesController extends AbstractController
             return $this->redirectToRoute('app_horaires');
         }
 
-        return $this->render('app_horaires/edit.html.twig', [
+        return $this->render('horaires/edit.html.twig', [
             'horaires' => $horaires,
         ]);
     }
