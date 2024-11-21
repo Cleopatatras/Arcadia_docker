@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Nourriture;
 use App\Form\AddNourritureFormType;
+use App\Repository\NourritureRepository;
 use App\Service\PictureService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,11 +15,11 @@ use Symfony\Component\Routing\Attribute\Route;
 class NourritureController extends AbstractController
 {
     #[Route('/nourriture', name: 'app_nourriture')]
-    public function index(): Response
+    public function index(NourritureRepository $nourritureRepository): Response
     {
-        return $this->render('nourriture/index.html.twig', [
-            'controller_name' => 'NourritureController',
-        ]);
+        $nourriture = $nourritureRepository->findAll();
+
+        return $this->render('nourriture/index.html.twig', compact('nourriture'));
     }
 
     #[Route('/nourriture/ajouter', name: 'app_nourriture_add')]
@@ -47,4 +48,32 @@ class NourritureController extends AbstractController
             'nourritureForm' => $nourritureForm->createView(),
         ]);
     }
+
+    #[Route('/nourriture/edition/{id}', 'app_nourriture_edit')]
+
+    public function edit(Nourriture $nourriture, Request $request, EntityManagerInterface $em, PictureService $pictureService): Response
+    {
+        $nourritureForm = $this->createForm(AddNourritureFormType::class, $nourriture);
+
+        $nourritureForm->handleRequest($request);
+
+        if ($nourritureForm->isSubmitted() && $nourritureForm->isValid()) {
+            $image = $nourritureForm->get('image')->getData();
+            if ($image) {
+                $imageLoad = $pictureService->square($image, 'nourriture');
+                $nourriture->setImage($imageLoad);
+            }
+            $em->flush();
+
+            $this->addFlash('success', 'Modification effectuée');
+
+            return $this->redirectToRoute('app_nourriture');
+        }
+
+        return $this->render('nourriture/edit.html.twig', [
+            'nourritureForm' => $nourritureForm->createView(),
+            'nourriture' => $nourriture,
+        ]);
+    }
+
 }

@@ -26,16 +26,6 @@
 
 				<h1>liste des animaux</h1>
 
-				<form method="get" action="{{ path('app_espace_admin_animaux') }}">
-					<label for="nom">Nom :</label>
-					<input type="text" id="nom" name="nom" value="{{ nom ?? '' }}">
-
-					<label for="race">Race :</label>
-					<input type="text" id="espece" name="espece" value="{{ espece ?? '' }}">
-
-					<button type="submit">Filtrer</button>
-				</form>
-
 				<table class="table table-striped text-tertiary">
 					<thead>
 						<tr>

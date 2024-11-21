@@ -1,20 +1,60 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello NourritureController!{% endblock %}
+{% block title %}nourriture
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<div class="container">
+		<div class="row">
+			{% if is_granted('ROLE_ADMIN') %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+				{% include "espace_admin/_adminnav.html.twig" %}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Env/Workspace/Docker/Arcadia_docker/app/src/Controller/NourritureController.php</code></li>
-        <li>Your template at <code>C:/Env/Workspace/Docker/Arcadia_docker/app/templates/nourriture/index.html.twig</code></li>
-    </ul>
-</div>
-{% endblock %}
+			{% elseif is_granted('ROLE_VETERINAIRE')%}
+
+				{% include "espace_veto/_vetonav.html.twig" %}
+
+			{% elseif is_granted('ROLE_EMPLOYE') %}
+
+				{% include "espace_emp/_empnav.html.twig" %}
+			{% endif %}
+
+
+			<main class="col-9 border border-secondary text-secondary p-2">
+				<h1>Liste des nourritures</h1>
+
+				<div class="container text-center">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Nom</th>
+								<th>Description</th>
+								<th>Image</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for nourritur in nourriture %}
+								<tr>
+									<td>{{ nourritur.nom }}</td>
+									<td>{{ nourritur.description }}</td>
+									<td><img src="{{ asset('uploads/nourriture/mini/300x300-') ~ nourritur.image}}" alt="{{ nourritur.nom }}" class="img-thumbnail"></td>
+									<td>
+										<a href="{{ path('app_nourriture_edit', {'id': nourritur.id}) }}">modifier</a>
+									</td>
+								</tr>
+							{% else %}
+								<tr>
+									<td colspan="6">aucune nourriture</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+
+					<a href="{{ path('app_nourriture_add') }}">ajouter une nourriture</a>
+				</main>
+
+			</div>
+
+		</main>
+	</div>
+</div>{% endblock %}

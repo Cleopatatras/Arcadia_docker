@@ -13,7 +13,7 @@ class PictureService
     ) {
     }
 
-    public function square(UploadedFile $picture, ?string $folder = '', ?int $width = 250): string
+    public function square(UploadedFile $picture, ?string $folder = '', ?int $width = 300): string
     {
         // On donne un nouveau nom à l'image
         $file = md5(uniqid(rand(), true)) . '.webp';

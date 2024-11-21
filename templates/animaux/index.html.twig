@@ -107,5 +107,9 @@
 		</div>
 	</section>
 
+	{% block javascript %}
+		<script src="{{ asset('js/compteur.js') }}?v={{ random() }}"></script>
+	{% endblock %}
+
 
 {% endblock %}
