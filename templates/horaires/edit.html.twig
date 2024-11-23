@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}administation
+{% endblock %}
+
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			{% include "espace_admin/_adminnav.html.twig" %}
+
+			<main class="col-9 border border-secondary text-secondary p-2">
+				<h1>Modifier un horaire</h1>
+
+				<div class="text-center">
+					<form method="post">
+						<label for="jour">Jour :</label>
+						<input type="text" name="jour" id="jour" value="{{ horaires.jour }}" required>
+
+						<label for="ouverture">Ouverture :</label>
+						<input type="time" name="ouverture" id="ouverture" value="{{ horaires.ouverture }}" required>
+
+						<label for="fermeture">Fermeture :</label>
+						<input type="time" name="fermeture" id="fermeture" value="{{ horaires.fermeture }}" required>
+
+						<button type="submit">Modifier</button>
+					</form>
+
+				</div>
+
+			</main>
+		</div>
+	</div>
+
+{% endblock %}

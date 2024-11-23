@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier animal
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			{% include "espace_admin/_adminnav.html.twig" %}
+
+			<main class="col-9 border border-secondary text-secondary p-2">
+				<h1>Modifier un animal</h1>
+
+				{{ form_start(animalForm) }}
+				<p style="p-2">{{ form_widget(animalForm)}}</p>
+
+				<button class="btn btn-secondary text-primary" type=" submit">Modifier</button>
+				{{ form_end(animalForm) }}
+
+			</main>
+		</div>
+	</div>
+
+
+{% endblock %}

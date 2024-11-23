@@ -40,6 +40,9 @@ class Animaux
     #[ORM\OneToMany(targetEntity: CompteRendu::class, mappedBy: 'animal')]
     private Collection $compteRendus;
 
+    #[ORM\Column]
+    private int $views = 0;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -158,4 +161,23 @@ class Animaux
 
         return $this;
     }
+
+    public function getViews(): int
+    {
+        return $this->views;
+    }
+
+    public function setViews(int $views): self
+    {
+        $this->views = $views;
+
+        return $this;
+    }
+
+    public function incrementViews(): self
+    {
+        $this->views++;
+        return $this;
+    }
+
 }

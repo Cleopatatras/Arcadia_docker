@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos habitats
+{% endblock %}
+
+{% block body %}
+
+	<div class="container-fluid entete text-primary d-flex justify-content-center h-33">
+
+		<div class="container bg-secondary title">
+			<h1 class="text-center">Nos habitats</h1>
+		</div>
+	</div>
+
+	<section class="section1">
+		<div class="habitat container-fluid">
+			<div class="text_section1">
+				<a href="/animaux" class="text-secondary">
+					<h2>Nos animaux de la SAVANE</h2>
+				</a>
+				<p>La savane est un écosystème unique, un milieu dynamique et vital pour de nombreuses espèces et communautés humaines.</p>
+			</div>
+
+			<div class="image_section">
+				<a href="/animaux"><img src="{{asset('/images/savane/paysage_savane.png')}}" alt="Image de savane" class="rounded img-fluid" width="40%"></a>
+
+
+				{# <img src="../../assets/images/Savane/Leo.png" alt=" "> #}
+
+			</div>
+
+		</div>
+	</section>
+	<section class="section2 bg-secondary text-primary">
+		<div class="habitat container-fluid">
+			<div class="image_section">
+				<a href="/animaux"><img src="{{asset('/images/jungle/jungle1.jpg')}}" alt="Image de jungle" class="rounded img-fluid" width="40%"></a>
+
+			</div>
+
+			<div class="text_section2">
+				<a href="/animaux" class="text-primary">
+					<h2>Nos animaux de la JUNGLE</h2>
+				</a>
+
+				<p>Biodiversité exceptionnelle, des interactions écologiques complexes. Sa conservation est essentielle pour préserver la biodiversité mondiale et les services écosystémiques vitaux qu'elle fournit.</p>
+			</div>
+
+
+		</div>
+	</section>
+	<section class="section3">
+		<div class="habitat container-fluid">
+			<div class="text_section1">
+				<a href="/animaux" class="text-secondary">
+					<h2>Nos animaux du MARAIS</h2>
+				</a>
+
+				<p>Ecosystème vital, riche en biodiversité et important pour la régulation écologique. Leur préservation est cruciale pour maintenir l'équilibre environnemental et protéger les nombreuses espèces qui en dépendent</p>
+			</div>
+
+			<div class="image_section">
+				<a href="/animaux"><img src="{{asset('/images/marais/marais.jpg')}}" alt="Image de marais" class="rounded img-fluid" width="40%"></a>
+
+			</div>
+
+		</div>
+
+	</section>
+
+	<section class="section4 bg-secondary text-primary text-center">
+
+		<h3>En cliquant sur un habitat, découvrez tous les animaux</h3>
+	</section>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout avis
+{% endblock %}
+
+{% block body %}
+
+	<div class="container-fluid entete text-primary d-flex justify-content-center h-33">
+
+		<div class="container bg-secondary title">
+			<h1 class="text-center">Votre avis</h1>
+		</div>
+	</div>
+
+	<div class="container d-flex justify-content-center w-50">
+		<div class="container bg-secondary text-primary d-flex justify-content-center m-5 p-3 w-100">
+			<form action="{{ path('app_add_avis') }}" method="post">
+				<div class="mb-3 w-150">
+					<label for="pseudo" class="form-label">Pseudo</label>
+					<input type="text" id="pseudo" name="pseudo" class="form-control w-80" required>
+				</div>
+
+				<div class="mb-3">
+					<label for="title" class="form-label">Titre de l'avis</label>
+					<input type="text" id="title" name="title" class="form-control" required>
+				</div>
+
+				<div class="mb-3">
+					<label for="comment" class="form-label">Votre commentaire</label>
+					<textarea id="comment" name="comment" class="form-control w-80" rows="5" required></textarea>
+				</div>
+
+				<div class="mb-3">
+					<label for="etoiles" class="form-label">Note (1 à 5 étoiles)</label>
+					<select id="etoiles" name="etoiles" class="form-select w-80" required>
+						<option value="" disabled selected>Choisissez une note</option>
+						<option value="1">1 étoile</option>
+						<option value="2">2 étoiles</option>
+						<option value="3">3 étoiles</option>
+						<option value="4">4 étoiles</option>
+						<option value="5">5 étoiles</option>
+					</select>
+				</div>
+
+				<button type="submit" class="btn btn-primary">Ajouter l'avis</button>
+				<a href="{{ path('app_avis_liste') }}" class="btn btn-primary">Annuler</a>
+			</form>
+		</div>
+	</div>
+{% endblock %}

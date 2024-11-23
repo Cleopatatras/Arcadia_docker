@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau CR
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			{% include "espace_veto/_vetonav.html.twig" %}
+
+			<main class="col-9 border border-secondary text-secondary p-2">
+
+				<h1>Nouveau compte-rendu</h1>
+
+				{{ include('compte_rendu/_form.html.twig') }}
+
+				<a href="{{ path('app_compte_rendu_index') }}">Retour à la liste</a>
+			</main>
+		</div>
+	</div>
+
+{% endblock %}

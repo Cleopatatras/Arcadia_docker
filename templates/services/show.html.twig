@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du service
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			{% include "espace_admin/_adminnav.html.twig" %}
+
+			<main class="col-9 border border-secondary text-secondary p-2">
+
+				<h1>Détails du service</h1>
+
+				<p>
+					<strong>Nom :</strong>
+					{{ service.nom }}</p>
+				<p>
+					<strong>description :</strong>
+					{{ service.description }}</p>
+
+				{% if service.image %}
+					<img src="{{ asset('uploads/services/' ~ service.image) }}" alt="{{ service.nom }}" style="max-width: 300px;">
+				{% endif %}
+
+				<a class="btn" href="{{ path('app_espace_admin_services') }}">Retour à la liste</a>
+
+
+				<a class="btn" href="{{ path('app_services_edit', {'id':service.id}) }}">modifier</a>
+
+				<form method="post" action="{{ path('app_services_delete', {'id': service.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet services ?');">
+					<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ service.id) }}">
+					<button type="submit" class="btn btn-danger p-3">Supprimer</button>
+				</form>
+			</main>
+
+		</div>
+
+	</div>
+	<!-- Formulaire de suppression -->
+
+{% endblock %}

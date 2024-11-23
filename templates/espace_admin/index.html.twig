@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}administation
+{% endblock %}
+
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			{% include "espace_admin/_adminnav.html.twig" %}
+
+			<main class="col-9 border border-secondary text-secondary p-2">
+				<h1>Administration</h1>
+
+				<div class="text-center">
+					<img src="{{asset('/images/accueil.jpg')}}" alt="image de zoo" class="img-fluid w-50">
+				</div>
+
+			</main>
+		</div>
+	</div>
+
+{% endblock %}

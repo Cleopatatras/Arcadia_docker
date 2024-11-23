@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}avis
+{% endblock %}
+
+{% block body %}
+
+	<div class="container-fluid entete text-primary d-flex justify-content-center h-33">
+
+		<div class="container bg-secondary title">
+			<h1 class="text-center">Vos avis !</h1>
+		</div>
+	</div>
+
+	<section class="container mt-4">
+		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+
+			{% for avi in avis %}
+
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-body">
+							<h6>
+								{% for i in 1..5 %}
+									{% if i <= avi.etoiles %}
+										<i class="fas fa-star text-secondary"></i>
+									{% else %}
+										<i class="far fa-star text-secondary"></i>
+									{% endif %}
+								{% endfor %}
+							</h6>
+
+							<h5 class="card-title">{{ avi.pseudo }}</h5>
+							<h6 class="card-title">{{ avi.title }}</h6>
+							<p class="card-text">{{ avi.comment }}</p>
+							<em>Posté le
+								{{ avi.date }}</em>
+						</div>
+					</div>
+				</div>
+			{% else %}
+				<div class="col-12">
+					<div class="alert alert-info text-center">Aucun avis pour le moment.</div>
+				{% endfor %}
+			</div>
+
+		</section>
+
+		<div class="mt-4 text-tertiary text-center">
+			<a href="{{ path('app_add_avis') }}" class="btn btn-secondary">Ajouter un avis</a>
+		</div>
+	{% endblock %}

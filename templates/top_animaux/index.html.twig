@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}top10
+{% endblock %}
+
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			{% include "espace_admin/_adminnav.html.twig" %}
+
+			<main class="col-9 border border-secondary text-secondary p-2">
+				<h1>Le top 10 des animaux</h1>
+
+				<div class="text-center d-flex flex-justify-content-center text-tertiary">
+					<ul class="list-group mb-5">
+						{% for animal in topAnimaux %}
+							<li class="list-group-item">{{ animal.nom }}
+								-
+								{{ animal.views }}
+								vues</li>
+						{% endfor %}
+					</ul>
+
+				</div>
+
+			</main>
+		</div>
+	</div>
+
+{% endblock %}

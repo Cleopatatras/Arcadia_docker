@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de l'animal
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+
+			<main class="col-9 border border-secondary text-secondary p-2">
+
+				<h1>Détails de l'animal</h1>
+
+				<p>
+					<strong>Nom :</strong>
+					{{ animal.nom }}</p>
+				<p>
+					<strong>Race :</strong>
+					{{ animal.race }}</p>
+				<p>
+					<strong>Habitat :</strong>
+					{{ animal.habitat.nom }}</p>
+
+				{% if animal.image %}
+					<img src="{{ asset('uploads/animal/' ~ animal.image) }}" alt="{{ animal.nom }}" style="max-width: 300px;">
+				{% endif %}
+
+				<a class="btn" href="{{ path('app_animaux') }}">Retour à la liste</a>
+
+			</main>
+
+		</div>
+
+	</div>
+
+
+{% endblock %}

@@ -11,17 +11,27 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> {% block stylesheets %}{% endblock %}
 
 
-		{% block javascripts %}
-			{% block importmap %}
-				{{ importmap('app') }}
-			{% endblock %}
+		{% block importmap %}
+			{{ importmap('app') }}
 		{% endblock %}
+
 	</head>
 	<body>
 		{% include "_partials/_navbar.html.twig" %}
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">{{ message }}</div>
+		{% endfor %}
+
+		{% for message in app.flashes('error') %}
+			<div class="alert alert-danger">{{ message }}</div>
+		{% endfor %}
+
 
 		{% block body %}{% endblock %}
 		{% include "_partials/_footer.html.twig" %}
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 
 	</body>
 </html>
