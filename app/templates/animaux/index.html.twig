@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les animaux
+{% endblock %}
+
+{% block body %}
+
+	{# Entete title #}
+	<div class="container-fluid entete text-primary d-flex justify-content-center h-33">
+
+		<div class="container bg-secondary title">
+			<h1 class="text-center">Nos animaux</h1>
+		</div>
+	</div>
+
+	{# Section savane #}
+
+	<section class="section1 container">
+		<div class="container d-flex flex-column p-3">
+			<div class="text_section1 justify-content-center">
+
+				<h2>Nos animaux de la SAVANE</h2>
+			</div>
+
+			{# //Création des cartes animaux: #}
+
+			<div class="card container d-flex flex-row justify-content-center mb-3" style="width: 70rem; ">
+
+
+				{% for animal in animauxSavane %}
+					<div class="card" style="width: 18rem;" data-id="{{ animal.id }}">
+						<img src="{{ asset('uploads/animal/mini/300x300-') ~animal.image }}" class="card-img-top" alt="{{ animal.nom }}">
+
+						<div class="card-body">
+							<h5 class="card-title">{{ animal.nom }}</h5>
+							<p class="card-text">{{ animal.race }}</p>
+							<a href="{{ path('app_animaux_detail', {'id': animal.id}) }}" data-url="{{ path('app_animaux_increment_view', {'id': animal.id}) }}" class="btn btn-secondary text-primary increment-view">
+								Voir tous les détails
+							</a>
+
+
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+		</div>
+
+	</section>
+	<section class="section1 container-fluid bg-secondary text-primary">
+		<div class="container d-flex flex-column p-3">
+			<div class="text_section1 justify-content-center text-primary">
+
+				<h2>Nos animaux de la JUNGLE</h2>
+			</div>
+
+			{# //Création des cartes animaux: #}
+
+			<div class="card container d-flex flex-row justify-content-center mb-3" style="width: 70rem; ">
+
+				{% for animal in animauxJungle %}
+					<div class="card" style="width: 18rem;" data-id="{{ animal.id }}">
+						<img src="{{ asset('uploads/animal/mini/300x300-') ~ animal.image }}" class="card-img-top" alt="{{ animal.nom }}">
+
+						<div class="card-body">
+							<h5 class="card-title">{{ animal.nom }}</h5>
+							<p class="card-text">{{ animal.race }}</p>
+							<a href="{{ path('app_animaux_detail', {'id': animal.id}) }}" data-url="{{ path('app_animaux_increment_view', {'id': animal.id}) }}" class="btn btn-secondary text-primary increment-view">
+								Voir tous les détails
+							</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+		</div>
+
+	</section>
+
+	<section class="section1 container">
+		<div class="container d-flex flex-column p-3">
+			<div class="text_section1 justify-content-center">
+
+				<h2>Nos animaux du MARAIS</h2>
+			</div>
+
+			{# //Création des cartes animaux: #}
+
+			<div class="card container d-flex flex-row justify-content-center mb-3" style="width: 70rem; ">
+
+
+				{% for animal in animauxMarais %}
+					<div class="card" style="width: 18rem;" data-id="{{ animal.id }}">
+						<img src="{{ asset('uploads/animal/mini/300x300-') ~ animal.image }}" class="card-img-top" alt="{{ animal.nom }}">
+
+						<div class="card-body">
+							<h5 class="card-title">{{ animal.nom }}</h5>
+							<p class="card-text">{{ animal.race }}</p>
+							<a href="{{ path('app_animaux_detail', {'id': animal.id}) }}" data-url="{{ path('app_animaux_increment_view', {'id': animal.id}) }}" class="btn btn-secondary text-primary increment-view">
+								Voir tous les détails
+							</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+		</div>
+	</section>
+
+	{% block javascript %}
+		<script src="{{ asset('js/compteur.js') }}?v={{ random() }}"></script>
+	{% endblock %}
+
+
+{% endblock %}

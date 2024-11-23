@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CompteRendu index
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			{% if is_granted('ROLE_ADMIN') %}
+
+				{% include "espace_admin/_adminnav.html.twig" %}
+
+			{% elseif is_granted('ROLE_VETERINAIRE')%}
+
+				{% include "espace_veto/_vetonav.html.twig" %}
+
+			{% elseif is_granted('ROLE_EMPLOYE') %}
+
+				{% include "espace_emp/_empnav.html.twig" %}
+			{% endif %}
+
+			<main class="col-9 border border-secondary text-secondary p-2">
+
+				<h1>Liste des compte-Rendus</h1>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Date</th>
+							<th>Nom du soigneur</th>
+							<th>Nom de l'animal</th>
+							<th>Etat_animal</th>
+							<th>Nourriture</th>
+							<th>Grammage</th>
+							<th>Detail</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for compte_rendu in compte_rendus %}
+							<tr>
+								<td>{{ compte_rendu.id }}</td>
+								<td>{{ compte_rendu.date ? compte_rendu.date|date('Y-m-d') : '' }}</td>
+								<td>{{ compte_rendu.user.username }}</td>
+								<td>{{ compte_rendu.animal.nom }}</td>
+								<td>{{ compte_rendu.nourriture.nom }}</td>
+								<td>{{ compte_rendu.grammage }}</td>
+								<td>{{ compte_rendu.detail }}</td>
+								<td>
+									<a href="{{ path('app_compte_rendu_show', {'id': compte_rendu.id}) }}">Voir</a>
+									<a href="{{ path('app_compte_rendu_edit', {'id': compte_rendu.id}) }}">Modifier</a>
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="6">aucun enregistrement</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+
+				<a href="{{ path('app_compte_rendu_new') }}">Créer un nouveau compte-rendu</a>
+			</main>
+
+		</div>
+
+	</div>
+
+{% endblock %}

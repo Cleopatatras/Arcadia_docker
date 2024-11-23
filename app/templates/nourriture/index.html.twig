@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}nourriture
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			{% if is_granted('ROLE_ADMIN') %}
+
+				{% include "espace_admin/_adminnav.html.twig" %}
+
+			{% elseif is_granted('ROLE_VETERINAIRE')%}
+
+				{% include "espace_veto/_vetonav.html.twig" %}
+
+			{% elseif is_granted('ROLE_EMPLOYE') %}
+
+				{% include "espace_emp/_empnav.html.twig" %}
+			{% endif %}
+
+
+			<main class="col-9 border border-secondary text-secondary p-2">
+				<h1>Liste des nourritures</h1>
+
+				<div class="container text-center">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Nom</th>
+								<th>Description</th>
+								<th>Image</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for nourritur in nourriture %}
+								<tr>
+									<td>{{ nourritur.nom }}</td>
+									<td>{{ nourritur.description }}</td>
+									<td><img src="{{ asset('uploads/nourriture/mini/300x300-') ~ nourritur.image}}" alt="{{ nourritur.nom }}" class="img-thumbnail"></td>
+									<td>
+										<a href="{{ path('app_nourriture_edit', {'id': nourritur.id}) }}">modifier</a>
+									</td>
+								</tr>
+							{% else %}
+								<tr>
+									<td colspan="6">aucune nourriture</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+
+					<a href="{{ path('app_nourriture_add') }}">ajouter une nourriture</a>
+				</main>
+
+			</div>
+
+		</main>
+	</div>
+</div>{% endblock %}

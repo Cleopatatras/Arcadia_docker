@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste utilisateurs
+{% endblock %}
+
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			{% include "espace_admin/_adminnav.html.twig" %}
+
+			<main class="col-9 border border-secondary text-secondary p-2">
+				<h1>Liste des utilisateurs</h1>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Utilisateur</th>
+							<th scope="col">Nom</th>
+							<th scope="col">Prénom</th>
+							<th scope="col">Email</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for liste in list %}
+							<tr>
+								<td>{{liste.username}}</td>
+								<td>{{liste.nom}}</td>
+								<td>{{liste.prenom}}</td>
+								<td>{{liste.email}}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+				<a href='/espace/admin' class="btn btn secondary" role="button">retour à l'espace administrateur</a>
+			</main>
+		</div>
+	</div>
+
+{% endblock %}

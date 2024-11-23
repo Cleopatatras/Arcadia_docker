@@ -1,0 +1,147 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Zoo Arcadia
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="container-fluid entete d-flex text-primary">
+
+		<div class="bienvenue col-lg-4">
+			<h1>Bienvenue à ARCADIA</h1>
+		</div>
+		<div class="entete-texte col-lg-4 col-sm-3">
+			<h3>Le Zoo de la forêt de Brocéliande depuis 1960</h3>
+		</div>
+	</div>
+
+	<section class="container-fluid presentation text-secondary m-4 d-flex">
+
+		<div class="presentation1 d-flex flex-column align-items-center align-bottom">
+			<div class="align-middle p-50">
+				<h4>Au milieu de la mystérieuse forêt de Brocéliande se trouve notre zoo ARCADIA</h4>
+				<p>Venez rencontrer nos animaux mystérieux</p>
+				<h4>Nos habitats</h4>
+				<p>Dans un environnement adapté, responsable, écologique et indépendant énergétiquement</p>
+				<p>Nos animaux de la savane, de la jungle et des marais vous attendent</p>
+			</div>
+
+		</div>
+		<div class="presentation2 d-flex flex-column mb-1">
+			<div class="presentationHabitats d-flex">
+
+				<figure class="figure m-2">
+					<a href="/habitats"><img src="{{asset('/images/jungle/jungle1.jpg')}}" class="figure-img img-fluid rounded-5" alt="la jungle"></a>
+					<h4 class="imgHover p-5">en savoir plus</h4>
+					<figcaption class="figure-caption text-center">
+						<h4>La Jungle</h4>
+					</figcaption>
+				</figure>
+
+				<figure class="figure m-2">
+					<a href="/habitats"><img src="{{asset('/images/savane/savane2.jpeg')}}" class="figure-img img-fluid rounded-5" alt="la savane"></a>
+					<h4 class="imgHover p-5">en savoir plus</h4>
+					<figcaption class="figure-caption text-center">
+						<h4>La Savane</h4>
+
+					</figcaption>
+				</figure>
+				<figure class="figure m-2">
+					<a href="/habitats"><img src="{{asset('/images/marais/marais.jpg')}}" class="figure-img img-fluid rounded-5" alt="le marais"></a>
+					<h4 class="imgHover p-5">en savoir plus</h4>
+					<figcaption class="figure-caption text-center">
+						<h4>Le marais</h4>
+
+					</figcaption>
+				</figure>
+
+			</div>
+
+		</div>
+
+	</div>
+</section>
+<h2 class="text-center mb-3">Partez à la découverte des animaux de la Savane, la Jungle et des Marais</h2>
+<section class="container-fluid services bg-secondary text-primary d-flex p-5">
+	<div class="guide">
+		<h3>Des visites guidées vous sont proposées</h3>
+		<img src="{{asset('/images/guide.png')}}" alt="guide">
+
+	</div>
+	<div class="train">
+		<img src="{{asset('/images/train.png')}}" alt="train">
+
+		<h3 style="p-3">le petit train</h3>
+	</div>
+	<div class="resto">
+		<h3>Restauration rapide</h3>
+		<img src="{{asset('/images/assiette.png')}}" alt="resto">
+
+	</div>
+	<div class="services">
+		<h2>Services sur place</h2>
+		<button type="button" class="btn btn-primary">
+			<a class="text-secondary" href="/services">En savoir plus</a>
+		</button>
+	</div>
+</section>
+
+<section class="container mt-4">
+	<h2 class="text-center mb-4">Ce que nos visiteurs disent</h2>
+
+	<div id="avisCarousel" class="carousel slide" data-bs-ride="carousel">
+		<div class="carousel-inner">
+			{% for avi in avis %}
+				<div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+					<div class="d-flex justify-content-center">
+						<div class="card w-75">
+							<div class="card-body">
+								<h6>
+									{% for i in 1..5 %}
+										{% if i <= avi.etoiles %}
+											<i class="fas fa-star text-warning"></i>
+										{% else %}
+											<i class="far fa-star text-muted"></i>
+										{% endif %}
+									{% endfor %}
+								</h6>
+								<h5 class="card-title">{{ avi.pseudo }}</h5>
+								<h6 class="card-subtitle mb-2 text-muted">{{ avi.title }}</h6>
+								<p class="card-text">{{ avi.comment }}</p>
+								<small class="text-muted">Posté le
+									{{ avi.date }}</small>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% else %}
+				<div class="carousel-item active">
+					<div class="d-flex justify-content-center">
+						<div class="card w-75">
+							<div class="card-body">
+								<p class="text-center">Aucun avis pour le moment.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+		<!-- Contrôles du carrousel -->
+		<button class="carousel-control-prev" type="button" data-bs-target="#avisCarousel" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Précédent</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#avisCarousel" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Suivant</span>
+		</button>
+	</div>
+
+</section>
+
+<div class="mt-4 text-tertiary text-center">
+	<a href="{{ path('app_add_avis') }}" class="btn btn-secondary">Ajouter votre avis</a>
+	<a href="{{ path('app_avis_liste') }}" class="btn btn-secondary">Voir tous les avis</a>
+</div>{% endblock %}

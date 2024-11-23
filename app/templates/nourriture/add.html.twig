@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout nourriture
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			{% if is_granted('ROLE_ADMIN') %}
+
+				{% include "espace_admin/_adminnav.html.twig" %}
+
+			{% elseif is_granted('ROLE_VETERINAIRE')%}
+
+				{% include "espace_veto/_vetonav.html.twig" %}
+
+			{% elseif is_granted('ROLE_EMPLOYE') %}
+
+				{% include "espace_emp/_empnav.html.twig" %}
+			{% endif %}
+
+
+			<main class="col-9 border border-secondary text-secondary p-2">
+				<h1>Ajouter une nourriture</h1>
+
+				{{ form_start(nourritureForm) }}
+				<p style="p-2">{{ form_row(nourritureForm.nom) }}</p>
+				<p style="p-2">{{ form_row(nourritureForm.description) }}</p>
+				<p style="p-2">{{ form_row(nourritureForm.image) }}</p>
+
+				<button class="btn btn-secondary text-primary" type=" submit">Ajouter</button>
+				{{ form_end(nourritureForm) }}
+
+
+			</main>
+		</div>
+	</div>
+
+
+{% endblock %}

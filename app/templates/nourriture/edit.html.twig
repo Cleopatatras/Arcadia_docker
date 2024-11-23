@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier nourriture
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			{% include "espace_admin/_adminnav.html.twig" %}
+
+			<main class="col-9 border border-secondary text-secondary p-2">
+				<h1>Modifier une nourriture</h1>
+
+				{{ form_start(nourritureForm) }}
+				<p style="p-2">{{ form_widget(nourritureForm)}}</p>
+
+				<button class="btn btn-secondary text-primary" type=" submit">Modifier</button>
+				{{ form_end(nourritureForm) }}
+
+			</main>
+		</div>
+	</div>
+
+
+{% endblock %}

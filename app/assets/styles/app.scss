@@ -1,0 +1,179 @@
+$primary: #f5f5dc;
+$secondary: #a0522d;
+$tertiary: #522da0;
+$beige: #d0a996;
+$blue: #522da0;
+$green: #2da052;
+$text-primary: #f5f5dc;
+$text-secondary: #a0522d;
+$text-tertiary: #522da0;
+$font-family-serif: "Merriweather", serif !default;
+$font-family-sans-serif: "Playwrite", sans-serif !default;
+$bs-body-color: #a0522d !important;
+$body-bg: #f5f5dc;
+$body-color: #a0522d;
+
+@import "../../vendor/twbs/bootstrap/scss/bootstrap";
+
+@font-face {
+  font-family: "Playwrite";
+  src: url("../fonts/PlaywriteFRModerne-Regular.ttf");
+}
+@font-face {
+  font-family: "Merry";
+  src: url("../fonts/Merriweather-Regular.ttf");
+}
+
+* {
+  margin: 1;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  outline: none;
+}
+
+#navbarNavDropdown {
+  justify-content: space-around;
+}
+// html {
+//   position: relative;
+//   min-height: 100%;
+// }
+.nav-link {
+  color: $secondary !important;
+}
+
+main {
+  margin-bottom: 250px;
+}
+section {
+  width: 100%;
+}
+
+footer {
+  padding: 15px;
+  // position: absolute;
+  // bottom: 0;
+  width: 100%;
+}
+footer a {
+  font-size: 14px;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Merry";
+}
+p {
+  font-family: "Playwrite";
+  font-size: 0.8rem;
+}
+
+.entete {
+  background: url("../images/photoTitre.png") center/cover;
+  position: relative;
+  height: 221px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+//-------------------------- Page principale ----------------
+
+.presentation1 {
+  width: 40%;
+  text-align: center;
+  padding: 8vh;
+}
+.presentation2 {
+  // display: flex;
+  // flex-direction: column;
+  width: 60%;
+}
+.habitat img {
+  max-width: 100%;
+}
+.imgHover {
+  visibility: hidden;
+  z-index: 5;
+  position: absolute;
+  top: 59%;
+  left: 10rem;
+  color: $primary;
+}
+.figure:hover .imgHover {
+  visibility: visible;
+}
+.services {
+  text-align: center;
+  align-items: center;
+}
+.services img {
+  width: 65%;
+}
+.creation {
+  background: $secondary;
+}
+
+//--------------------------------------- style de la page habitat --------------------------------
+
+.title {
+  justify-content: center;
+  align-items: center;
+  width: 33vh;
+  height: 6vh;
+  border-radius: 10px;
+}
+.habitat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3em;
+}
+.image_section {
+  margin: 0 auto;
+  text-align: center;
+}
+// ------------------------- Page Contact -------------------------
+
+.contact {
+  border: $secondary thick double;
+  border-radius: 2em;
+  width: 40%;
+  margin-top: 5em;
+  margin-bottom: 3em;
+  padding: 2em;
+}
+//-------------------------- Page habitat --------------------------
+.preview {
+  display: none;
+}
+
+//--------------------------- Page espace admin----------------------
+
+.card-body a {
+  text-decoration: none;
+  color: $blue;
+}
+.table a {
+  text-decoration: none;
+  color: $tertiary !important;
+}
+
+//---------------------------Page Info Pratiques --------------------
+
+.table {
+  color: $blue !important;
+}
+
+//---------------------------Page Véto -------------------------------
+
+.compterendu {
+  margin-left: 2rem;
+  margin-top: 0.5rem;
+  text-align: left;
+  padding: 5rem;
+}
+.required {
+  padding: 20px;
+}

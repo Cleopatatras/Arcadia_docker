@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Avis
+{% endblock %}
+
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			{% include "espace_emp/_empnav.html.twig" %}
+
+			<main class="col-9 border border-secondary text-secondary p-2">
+				<h1>Avis à valider</h1>
+
+				<ul class="list-group">
+
+					{% if avis|length > 0 %}
+						{% for avi in avis %}
+							<li class="list-group-item d-flex justify-content-between align-items-center">
+								<div>
+									<strong>{{ avi.pseudo }}</strong>
+									<h6>({{ avi.etoiles }}/5)</h6>
+									<h6>{{ avi.title }}</h6>
+									<p>{{ avi.comment }}</p>
+									<em>Posté le
+										{{ avi.date }}</em>
+								</div>
+
+								<div class="btn-group">
+									<form action="{{ path('app_avis_approve', { id: avi._id }) }}" method="post" class="me-2">
+										<button type="submit" class="btn btn-success btn-sm">Approuver</button>
+									</form>
+
+									<form action="{{ path('app_avis_delete', { id: avi._id }) }}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet avis ?');">
+										<button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+									</form>
+								</div>
+							</li>
+						{% endfor %}
+					{% else %}
+						<li class="list-group-item">Aucun avis à valider pour le moment.</li>
+					{% endif %}
+
+				</ul>
+
+			</main>
+			<div class="mt-4 text-tertiary">
+				<a href="{{ path('app_espace_emp') }}" class="btn btn-secondary">Retour à l'espace employé</a>
+
+			</div>
+
+		</div>
+	</div>
+{% endblock %}
